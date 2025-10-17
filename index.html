@@ -4,7 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Taller de Uncle Gery — De la idea al primer paso real</title>
-  <meta name="description" content="Taller de Uncle Gery: 4 encuentros grupales para emprendedores que quieren pasar de la idea a la acción. Movimiento, Observación y Validación con humor y sin humo." />
+  <!-- SEO + Social Meta Tags -->
+  <meta name="description" content="Taller de Uncle Gery: 4 encuentros grupales (4–5 personas) para pasar de la idea a la acción. Movimiento, Observación y Validación con humor y sin humo." />
   <meta property="og:title" content="Taller de Uncle Gery — De la idea al primer paso real" />
   <meta property="og:description" content="No te vendo éxito. Te empujo a moverte." />
   <meta property="og:type" content="website" />
@@ -12,87 +13,345 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="canonical" href="https://unclegery.com/" />
   <link rel="icon" href="/favicon.ico" />
+
+  <!-- Plausible Analytics -->
+  <script defer data-domain="unclegery.com" src="https://plausible.io/js/script.js"></script>
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <script defer data-domain="unclegery.com" src="https://plausible.io/js/script.js"></script>
+
   <style>
-    body{font-family:'Inter',sans-serif;background:#0e1117;color:#f5f5f5;margin:0;padding:0;line-height:1.6}
-    header,section,footer{padding:64px 24px;max-width:960px;margin:auto}
-    header h1{font-size:2.5rem;margin-bottom:1rem}
-    header p{font-size:1.2rem;color:#aaa}
-    .card{background:#161b22;padding:24px;border-radius:12px;margin:24px 0}
-    .card h3{color:#ffb347;margin-bottom:12px}
-    .grid{display:grid;gap:24px}
-    @media(min-width:768px){.grid{grid-template-columns:repeat(2,1fr)}}
-    a.button{display:inline-block;background:#ffb347;color:#111;padding:12px 24px;border-radius:6px;text-decoration:none;font-weight:600}
-    footer{text-align:center;color:#777;font-size:0.9rem}
+    :root{
+      --bg:#0f1115;          /* fondo oscuro elegante */
+      --card:#171A21;        /* tarjetas */
+      --ink:#EAEFF7;         /* texto principal */
+      --muted:#A8B3C7;       /* texto secundario */
+      --brand:#F49D37;       /* acento cálido (naranja) */
+      --brand-2:#7CF2C8;     /* acento secundario (menta) */
+      --line:#2A2F3A;        /* separadores */
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+    .btn{display:inline-block;padding:14px 20px;border-radius:14px;background:var(--brand);color:#141414;font-weight:700;transition:transform .12s ease, box-shadow .12s ease}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(244,157,55,.25)}
+    .btn[disabled]{opacity:.65;cursor:not-allowed}
+    .btn-outline{background:transparent;border:2px solid var(--brand);color:var(--ink)}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);color:var(--muted);font-size:12px}
+
+    header.hero{padding:72px 0 48px;border-bottom:1px solid var(--line);background:radial-gradient(1200px 600px at 70% -10%, rgba(124,242,200,.08), transparent)}
+    .hero-grid{display:grid;grid-template-columns:1fr;gap:28px;align-items:center}
+    .hero h1{font-size:44px;line-height:1.12;margin:10px 0 16px}
+    .hero p.lead{font-size:18px;color:var(--muted);margin:0 0 22px}
+    .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+
+    /* Section blocks */
+    section{padding:64px 0;border-bottom:1px solid var(--line)}
+    section h2{font-size:28px;margin:0 0 8px}
+    section .sub{color:var(--muted);margin:0 0 24px}
+
+    /* Cards & grids */
+    .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}
+    .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+
+    /* Manifesto bullets */
+    .m-bullet{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+    .m-bullet h3{margin:0 0 6px;font-size:18px}
+    .m-bullet p{margin:0;color:var(--muted)}
+
+    /* Historia cards (alt style) */
+    .card-alt{background:#14171f;border-left:4px solid var(--brand-2);border-radius:14px;padding:20px}
+    .meta{font-size:13px;color:var(--muted)}
+
+    /* Power Cards */
+    .power{position:relative;overflow:hidden}
+    .tag{position:absolute;top:12px;right:12px;background:var(--brand-2);color:#0b0f11;font-weight:700;border-radius:999px;padding:4px 10px;font-size:12px}
+    .power h4{margin:0 0 6px}
+    ul{padding-left:18px;margin:8px 0}
+
+    /* FAQ */
+    details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+    summary{cursor:pointer;font-weight:700}
+    details + details{margin-top:12px}
+
+    /* Drawer (hamburger) */
+    .hamburger{position:fixed;top:16px;left:16px;width:44px;height:44px;border-radius:10px;border:1px solid var(--line);background:rgba(20,22,28,.65);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:1001}
+    .hamburger span,.hamburger span:before,.hamburger span:after{content:"";display:block;width:20px;height:2px;background:var(--ink);position:relative;border-radius:2px}
+    .hamburger span:before{position:absolute;top:-6px}
+    .hamburger span:after{position:absolute;top:6px}
+
+    .drawer{position:fixed;inset:0 35% 0 0;max-width:320px;background:#11141a;border-right:1px solid var(--line);transform:translateX(-100%);transition:transform .2s ease;z-index:1000;padding:20px}
+    .drawer.open{transform:translateX(0)}
+    .drawer h3{margin:6px 0 14px}
+    .drawer a{display:block;padding:10px 8px;border-radius:10px;color:var(--muted)}
+    .drawer a:hover{background:#191d26;color:var(--ink)}
+    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);opacity:0;visibility:hidden;transition:opacity .2s ease;z-index:999}
+    .overlay.show{opacity:1;visibility:visible}
+
+    /* WhatsApp Floating */
+    .wa{position:fixed;right:18px;bottom:18px;width:54px;height:54px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;color:#051b11;font-weight:900;box-shadow:0 10px 24px rgba(0,0,0,.35);z-index:900}
+    .wa:hover{transform:translateY(-1px)}
+    .wa svg{width:28px;height:28px}
+
+    /* Back to top */
+    #backTop{position:fixed;right:18px;bottom:86px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#191d26;color:var(--ink);display:none;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.25);z-index:901;cursor:pointer}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero-grid{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr 1fr}
+      .grid-2{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr}
+      .drawer{inset:0 20% 0 0}
+    }
+    @media (max-width:640px){
+      .hero h1{font-size:34px}
+      .grid-3{grid-template-columns:1fr}
+      .drawer{inset:0 0 0 0}
+    }
+
+    /* Focus styles */
+    :focus-visible{outline:2px solid var(--brand-2);outline-offset:2px}
+    summary:focus-visible{outline:2px solid var(--brand)}
+    input,textarea,button, a.btn{transition:box-shadow .12s ease}
+    input:focus-visible,textarea:focus-visible{box-shadow:0 0 0 3px rgba(124,242,200,.15)}
   </style>
 </head>
 <body>
-  <header>
-    <h1>No hace falta tener todo listo para empezar.<br>Hace falta dar el primer paso y aquí te mostramos cómo.</h1>
-    <p>Taller de Uncle Gery: un espacio para moverte, equivocarte rápido y construir con otros.</p>
-    <a href="#contacto" class="button">Coordinar reunión personal</a>
+  <!-- HAMBURGER + DRAWER -->
+  <button class="hamburger" aria-label="Abrir menú" onclick="toggleDrawer()"><span></span></button>
+  <aside id="drawer" class="drawer" aria-hidden="true" tabindex="-1">
+    <h3>Menú</h3>
+    <nav>
+      <a href="#aplicar" onclick="toggleDrawer(false)">Quiero mover mi idea</a>
+      <a href="#fracasos" onclick="toggleDrawer(false)">Sobre mis emprendimientos y fracasos</a>
+      <a href="#historia" onclick="toggleDrawer(false)">Mi aporte a la comunidad</a>
+      <a href="#manifiesto" onclick="toggleDrawer(false)">Manifiesto</a>
+      <a href="#taller" onclick="toggleDrawer(false)">El Taller</a>
+      <a href="#faq" onclick="toggleDrawer(false)">FAQ</a>
+      <a href="#contacto" onclick="toggleDrawer(false)">Contacto</a>
+    </nav>
+  </aside>
+  <div id="overlay" class="overlay" onclick="toggleDrawer(false)"></div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="pill">🚀 Taller de Uncle Gery · Método MOV</span>
+        <h1>No hace falta tener todo listo para empezar.<br/>Hace falta <span style="color:var(--brand)">dar el primer paso</span> y acá te mostramos cómo...</h1>
+        <p class="lead">Soy <strong>Uncle Gery</strong>. En 4 encuentros en grupos de 4–5 personas te acompaño a mover tu idea: la contamos, la observamos y la validamos. <br/>Sin humo. Con humor. Y con resultados reales.</p>
+        <div class="cta">
+          <a href="#aplicar" class="btn">Quiero mover mi idea</a>
+          <a href="#taller" class="btn btn-outline">Ver cómo funciona</a>
+          <a href="#contacto" class="btn btn-outline">Coordinar reunión personal</a>
+        </div>
+      </div>
+    </div>
   </header>
 
+  <!-- MANIFIESTO en tarjetas -->
   <section id="manifiesto">
-    <h2>Manifiesto</h2>
-    <div class="grid">
-      <div class="card"><h3>1. El que no se mueve se llena de telarañas</h3><p>El movimiento genera aprendizaje, y la acción, claridad. Nadie empieza sabiendo, pero el que empieza, aprende.</p></div>
-      <div class="card"><h3>2. Emprender es animarse a empezar con lo que hay</h3><p>Esperar el momento perfecto es el mejor camino para no hacer nada. Arrancá con lo que tengas: una idea, mil dudas y cero garantías.</p></div>
-      <div class="card"><h3>3. Equivocarse rápido y barato</h3><p>Fracasar no es un drama, es parte del método. Lo caro es tardar en darse cuenta. Cada error que te ahorra tiempo o plata es un paso adelante.</p></div>
-      <div class="card"><h3>4. Nadie emprende solo, aunque parezca</h3><p>Todos conocemos esa soledad: la gente que no entiende nuestras ideas. Por eso existe Uncle Gery: un grupo para pensar, debatir y moverse juntos.</p></div>
-      <div class="card"><h3>5. Honestidad antes que perfección</h3><p>No tengo todas las respuestas, pero tengo muchas cicatrices y aprendizajes. Esto no es una clase: es una charla de taller. Y de esas charlas, siempre sale algo.</p></div>
+    <div class="wrap">
+      <h2>💬 Manifiesto de Uncle Gery</h2>
+      <p class="sub">Emprender no se enseña: se vive. Y a veces, se sobrevive.</p>
+      <div class="grid-3">
+        <div class="m-bullet"><h3>1) El que no se mueve se oxida</h3><p>Esperar lo perfecto es no empezar nunca. Empezar mal es mejor que no empezar.</p></div>
+        <div class="m-bullet"><h3>2) Empezar con lo que hay</h3><p>Nadie arranca con todo resuelto. Se aprende en el agua, no mirando la pileta.</p></div>
+        <div class="m-bullet"><h3>3) Equivocarse rápido y barato</h3><p>Fallá pronto, aprendé barato. Lo caro es tardar en darse cuenta.</p></div>
+        <div class="m-bullet"><h3>4) Nadie emprende solo</h3><p>Un espacio seguro donde te escuchan, te empujan y te prestan sus ojos.</p></div>
+        <div class="m-bullet"><h3>5) El grupo es el laboratorio</h3><p>No competimos: construimos. El resultado puede ser un negocio o una nueva mirada.</p></div>
+        <div class="m-bullet"><h3>6) Honestidad antes que perfección</h3><p>No tengo todas las respuestas. Tengo cicatrices y ganas de compartir.</p></div>
+      </div>
+      <p style="margin-top:18px;color:var(--muted)"><strong>Resumen:</strong> No te vendo éxito. <strong>Te empujo a moverte.</strong></p>
     </div>
   </section>
 
-  <section id="aportes">
-    <h2>Mi aporte a la comunidad</h2>
-    <div class="grid">
-      <div class="card"><h3>Club de la Comedia (2013–2018)</h3><p>Primer club de stand up de Tucumán. Escuela y circuito de comediantes. Aprendí el arte de contar ideas con humor y empatía.</p></div>
-      <div class="card"><h3>Prestario de Bicicletas (2015–2018)</h3><p>Red de puntos donde cualquiera podía tomar una bici prestada para moverse por la ciudad. Diseñamos comunidad antes que negocio.</p></div>
-      <div class="card"><h3>Hackathon Tucumán (2016–2017)</h3><p>Reuniones de 24h para resolver problemas reales con creatividad y tecnología.</p></div>
-      <div class="card"><h3>Rally Latinoamericano de Innovación (2016–2019)</h3><p>Organizador y mentor. Enseñé que innovar no es un evento, es una actitud.</p></div>
-      <div class="card"><h3>TEDx Universidad Nacional (2017–2018)</h3><p>Asesor y presentador de charlas. Aprendí a convertir ideas en historias que movilizan.</p></div>
-      <div class="card"><h3>FuckUp Nights (2014–2018)</h3><p>Organizador. Celebramos los fracasos para que otros aprendan a tropezar mejor.</p></div>
+  <!-- APORTE A LA COMUNIDAD (tarjetas alt) -->
+  <section id="historia">
+    <div class="wrap">
+      <h2>🧭 Mi aporte a la comunidad</h2>
+      <p class="sub">Años de crear espacios donde la gente se anima a hacer, aprender y compartir.</p>
+      <div class="cards">
+        <div class="card-alt"><h4>Club de la Comedia (2013–2018)</h4><p class="meta">Primer club y escuela de stand up en Tucumán. Formamos comediantes y un circuito que aún vive.</p></div>
+        <div class="card-alt"><h4>Prestario de Bicicletas (2015–2018)</h4><p class="meta">Sistema gratuito de préstamos de bicicletas en locales aliados. Movilidad y comunidad sobre ruedas.</p></div>
+        <div class="card-alt"><h4>Hackathon Tucumán (2016–2017)</h4><p class="meta">Competencia de innovación abierta donde estudiantes resolvían desafíos reales en 24 horas.</p></div>
+        <div class="card-alt"><h4>Rally Latinoamericano de Innovación (2016–2019)</h4><p class="meta">Organizador y mentor. Conectando mentes creativas de toda Latinoamérica.</p></div>
+        <div class="card-alt"><h4>24hs de Innovación (2013–2017)</h4><p class="meta">Evento de pensamiento rápido y trabajo en equipo para estudiantes universitarios.</p></div>
+        <div class="card-alt"><h4>RÍES – Rally de Innovación Escolar (2018)</h4><p class="meta">Primer evento de innovación para escuelas secundarias. Creatividad desde la base.</p></div>
+        <div class="card-alt"><h4>TEDx Universidad Nacional de Tucumán (2017–2018)</h4><p class="meta">Organizador, presentador y coach de oradores. Ideas que valía la pena compartir.</p></div>
+        <div class="card-alt"><h4>FuckUp Nights (2014–2018)</h4><p class="meta">Coorganizador y presentador durante 6 años. Celebrar el error para aprender juntos.</p></div>
+        <div class="card-alt"><h4>Incuba UNT (2016–2019)</h4><p class="meta">Creador y asesor de más de 300 emprendedores desde la incubadora de la Universidad Nacional de Tucumán.</p></div>
+      </div>
     </div>
   </section>
 
-  <section id="cartas">
-    <h2>Sobre mis emprendimientos y fracasos</h2>
-    <div class="grid">
-      <div class="card"><h3>El Aleph (2001–2002)</h3><p><strong>Dolor:</strong> Medio 💰 — <em>Aprendizaje rápido</em>. Mi primer bar cultural. Aprendí a separar amistad de negocio y a no pedir préstamos a la familia.</p></div>
-      <div class="card"><h3>AutosTucuman.com (2006–2013)</h3><p><strong>Dolor:</strong> Bajo 💰 — <em>Aprendizaje alto</em>. Primer portal de autos usados de mi provincia. Me adelanté al mercado, pero debí invertir más en publicidad.</p></div>
-      <div class="card"><h3>Proyectanos (2008–2009)</h3><p><strong>Dolor:</strong> Bajo 💰 — <em>Aprendizaje medio</em>. Primera plataforma de crowdfunding en Argentina. La tecnología no acompañó el sueño.</p></div>
-      <div class="card"><h3>Buro Coworking (2012–2019)</h3><p><strong>Dolor:</strong> Alto 💰 — <em>Aprendizaje muy alto</em>. Primer coworking del norte argentino. Vendido justo antes del COVID. Aprendí sobre comunidad y foco.</p></div>
-      <div class="card"><h3>Radio B (2018–2019)</h3><p><strong>Dolor:</strong> Medio 💰 — <em>Aprendizaje alto</em>. Radio web feminista. Entendí la fuerza de dar voz a quienes no la tienen.</p></div>
-      <div class="card"><h3>Etzel Bar & Gery (2022–2024)</h3><p><strong>Dolor:</strong> Alto 💰 — <em>Aprendizaje alto</em>. Restaurante argentino vegano en Haifa. Confirmé que un buen concepto necesita tanta difusión como sabor.</p></div>
+  <!-- EMPRENDIMIENTOS Y FRACASOS (Cartas de poder) -->
+  <section id="fracasos">
+    <div class="wrap">
+      <h2>🧪 Sobre mis emprendimientos y fracasos</h2>
+      <p class="sub">Cartas de poder: qué hice bien, qué hice mal, qué cambiaría y qué aprendí.</p>
+      <div class="cards">
+        <div class="card power"><span class="tag">Dolor: Medio</span><h4>El Aleph (2001–2002)</h4><p class="meta">Bar/Pub temático · Primer escenario para bandas locales</p><ul><li>✅ Referente en su tipo; económicamente funcionó; logré venderlo.</li><li>❌ Préstamo familiar = presión; mezclar amigos/negocio; desgaste nocturno.</li><li>🔄 Hoy: invertiría más en cocina y variedad.</li><li>🎮 Poder: saber en cuánto tiempo se enfría una cerveza en el freezer.</li></ul><p class="meta">Velocidad de aprendizaje: Rápido · Aprendizaje ganado: Alto</p></div>
+        <div class="card power"><span class="tag">Dolor: Bajo</span><h4>AutosTucuman.com (2006–2013)</h4><p class="meta">Compra-venta de autos usados · Pionero en la provincia</p><ul><li>✅ Me adelanté 2 años al mercado; buena posición online; llegada sólida cuando entraron RRSS.</li><li>❌ Poca inversión en publicidad; dependencia de concesionarias.</li><li>🔄 Hoy: invertiría más en marketing y haría eventos de autos.</li><li>🎮 Poder: logos de todas las marcas… de memoria.</li></ul><p class="meta">Velocidad de aprendizaje: Lenta · Aprendizaje ganado: Muy Alto</p></div>
+        <div class="card power"><span class="tag">Dolor: Bajo</span><h4>Proyectanos (2008–2009)</h4><p class="meta">Plataforma de financiamiento colectivo · Primera en su tipo</p><ul><li>✅ Gran difusión en medios y RRSS; comunidad de emprendedores sólida.</li><li>❌ Baja automatización; poca inversión tech; filtrado débil de proyectos.</li><li>🔄 Hoy: más desarrollo tecnológico y menos dependencia de tiempo.</li><li>🎮 Poder: pedir plata a inversores sin desmayar.</li></ul><p class="meta">Velocidad de aprendizaje: Lenta · Aprendizaje ganado: Medio</p></div>
+        <div class="card power"><span class="tag">Dolor: Alto</span><h4>Büro Coworking (2012–2019)</h4><p class="meta">Espacio compartido · Incubadora de emprendedores</p><ul><li>✅ Primer coworking del norte argentino; red enorme; socios estratégicos diversos; referente local; vendido antes del COVID.</li><li>❌ Precio mal enfocado; abrir puertas a todo tipo de público; crecimiento rápido sin planificación.</li><li>🔄 Hoy: más exclusividad y foco en cliente objetivo.</li><li>🎮 Poder: gestor inmobiliario con buenas intenciones.</li></ul><p class="meta">Velocidad de aprendizaje: Medio · Aprendizaje ganado: Muy Alto</p></div>
+        <div class="card power"><span class="tag">Dolor: Medio</span><h4>Radio B (2018–2019)</h4><p class="meta">Radio web con perspectiva de género y compromiso social</p><ul><li>✅ Detectar audiencia sin micrófono; convocar equipos afines; equipo comprometido.</li><li>❌ Pocos eventos de comunidad; equipo comercial poco profesional.</li><li>🔄 Hoy: invertiría más en desarrollo tecnológico y comercial.</li><li>🎮 Poder: aprender a ser conductor de radio.</li></ul><p class="meta">Velocidad de aprendizaje: Rápido · Aprendizaje ganado: Alto</p></div>
+        <div class="card power"><span class="tag">Dolor: Alto</span><h4>Etzel Bar & Gery (2022–2024)</h4><p class="meta">Restaurante argentino vegano · Boutique en el Mercado de Haifa</p><ul><li>✅ Posicionamiento rápido; boca a boca; ambiente íntimo; buena elección de ubicación; venta del restaurante.</li><li>❌ Poca inversión en difusión; no ampliar horario nocturno.</li><li>🔄 Hoy: invertiría más en difusión.</li><li>🎮 Poder: postres veganos nivel abuela.</li></ul><p class="meta">Velocidad de aprendizaje: Rápido · Aprendizaje ganado: Alto</p></div>
+      </div>
     </div>
   </section>
 
+  <!-- TALLER -->
+  <section id="taller">
+    <div class="wrap">
+      <h2>🧰 El Taller — Método MOV (4×90’)</h2>
+      <p class="sub">Movimiento · Observación · Validación. Grupos de 4–5 personas. Resultado: tu Mapa de Movimiento completo + 2 micro-validaciones reales.</p>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Qué vas a lograr</h3>
+          <ul>
+            <li>Contar tu idea con claridad y recibir feedback honesto.</li>
+            <li>Diseñar y ejecutar micro-experimentos simples.</li>
+            <li>Completar tu <em>Mapa de Movimiento</em> y tu <em>Bitácora</em> del grupo.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Cómo funciona</h3>
+          <ul>
+            <li><strong>Clase 1:</strong> del pensamiento al movimiento.</li>
+            <li><strong>Clase 2:</strong> ponerle forma (diseño de experimento).</li>
+            <li><strong>Clase 3:</strong> probar sin miedo (validación).</li>
+            <li><strong>Clase 4:</strong> compartir, ajustar y seguir.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ (resumen) -->
   <section id="faq">
-    <h2>Preguntas frecuentes</h2>
-    <div class="card"><h3>¿Necesito tener experiencia?</h3><p>No. Solo ganas de emprender y de participar activamente en grupo.</p></div>
-    <div class="card"><h3>¿Cuánto dura el taller?</h3><p>4 encuentros online de 90 minutos, con grupos reducidos de 4 o 5 personas.</p></div>
-    <div class="card"><h3>¿Qué obtengo al final?</h3><p>Tu idea transformada en una propuesta clara, una primera validación y un grupo de apoyo.</p></div>
+    <div class="wrap">
+      <h2>💬 FAQ — Preguntas frecuentes</h2>
+      <details><summary>¿Necesito tener una idea concreta?</summary><p>Sólo ganas de hacer. Si tenés una idea vaga, la ordenamos. Si ya empezaste, la ajustamos y validamos.</p></details>
+      <details><summary>¿Qué me llevo al final?</summary><p>Tu Mapa de Movimiento completo, la Bitácora del grupo y al menos 2 validaciones ejecutadas.</p></details>
+      <details><summary>¿Cuántos somos por grupo?</summary><p>4–5 personas. Lo suficiente para que te escuchen; poco para que no te escondas.</p></details>
+    </div>
+  </section>
+
+  <!-- CTA / FORM + CONTACTO / CALENDLY -->
+  <section id="aplicar">
+    <div class="wrap">
+      <div class="card">
+        <h2>Listo para moverte</h2>
+        <p class="sub">Dejame tus datos y te escribo para una mini charla de 15 minutos antes de inscribirte.</p>
+        <!-- Google Sheets: pegá tu URL de Apps Script (termina en /exec) -->
+        <form id="apply-form" action="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" method="POST" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <input name="nombre" aria-label="Nombre" required placeholder="Nombre" style="padding:14px 12px;border-radius:10px;border:1px solid var(--line);background:#0d1016;color:var(--ink)"/>
+          <input name="email" aria-label="Email" required type="email" placeholder="Email" style="padding:14px 12px;border-radius:10px;border:1px solid var(--line);background:#0d1016;color:var(--ink)"/>
+          <input name="ubicacion" aria-label="País o ciudad" placeholder="País / Ciudad" style="padding:14px 12px;border-radius:10px;border:1px solid var(--line);background:#0d1016;color:var(--ink)"/>
+          <input name="idea_7_palabras" aria-label="Tu idea en 7 palabras" placeholder="Tu idea en 7 palabras" style="padding:14px 12px;border-radius:10px;border:1px solid var(--line);background:#0d1016;color:var(--ink)"/>
+          <textarea name="objetivo_4_semanas" aria-label="¿Qué te gustaría mover en estas 4 semanas?" placeholder="¿Qué te gustaría mover en estas 4 semanas?" style="grid-column:1/-1;padding:14px 12px;border-radius:10px;border:1px solid var(--line);background:#0d1016;color:var(--ink);min-height:110px"></textarea>
+          <input type="hidden" name="origen" value="Landing Uncle Gery" />
+          <button class="btn" style="grid-column:1/-1">Quiero sumarme al próximo grupo</button>
+          <p id="apply-success" class="meta" style="display:none;grid-column:1/-1;color:var(--brand-2)">¡Gracias! Te voy a escribir pronto para coordinar la charla.</p>
+          <p id="apply-error" class="meta" style="display:none;grid-column:1/-1;color:#ffb3b3">Ups, algo falló. Escribime por WhatsApp si persiste.</p>
+        </form>
+      </div>
+    </div>
   </section>
 
   <section id="contacto">
-    <h2>Contacto</h2>
-    <form id="apply" action="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" method="POST">
-      <input type="text" name="nombre" placeholder="Nombre" required />
-      <input type="email" name="email" placeholder="Email" required />
-      <input type="text" name="idea_7_palabras" placeholder="Tu idea en 7 palabras" />
-      <button type="submit" class="button">Enviar</button>
-    </form>
+    <div class="wrap">
+      <div class="card" style="display:flex;flex-direction:column;gap:14px">
+        <h2>Coordinemos una charla de 15 minutos</h2>
+        <p class="sub">Elegí día y hora y charlamos (usamos Calendly para coordinar).</p>
+        <div>
+          <a class="btn" href="#" onclick="openCalendly();return false;">Coordinar reunión personal</a>
+          <p class="meta" style="margin-top:8px">Si no se abre el pop‑up: <a href="https://calendly.com/unclegery/15min" target="_blank" rel="noopener">abrir en otra pestaña</a>.</p>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <footer>
-    <p>© <span id="y"></span> Uncle Gery. Todos los derechos reservados.</p>
+  <footer style="padding:36px 0;color:var(--muted)">
+    <div class="wrap">
+      <p>© <span id="y"></span> Uncle Gery — No te vendo éxito. Te empujo a moverte.</p>
+    </div>
   </footer>
+
+  <!-- Floating buttons -->
+  <button id="backTop" aria-label="Volver arriba" title="Volver arriba">↑</button>
+  <a class="wa" href="https://wa.me/972522563659?text=Hola%20Uncle%20Gery%2C%20quiero%20mover%20mi%20idea" target="_blank" aria-label="WhatsApp" title="Escribime por WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+      <title>WhatsApp</title>
+      <path fill="#075E54" d="M16 .5C7.44.5.5 7.44.5 16c0 2.74.71 5.32 2.07 7.63L.5 31.5l8.12-2.02A15.4 15.4 0 0 0 16 31.5C24.56 31.5 31.5 24.56 31.5 16S24.56.5 16 .5z"/>
+      <path fill="#25D366" d="M24.26 18.77c-.38-.2-2.24-1.1-2.59-1.23-.35-.13-.6-.2-.86.2-.25.38-.98 1.23-1.2 1.48-.22.25-.44.28-.82.1-.38-.2-1.62-.6-3.08-1.9-1.14-1.01-1.9-2.26-2.13-2.63-.22-.38-.02-.58.17-.77.17-.17.38-.44.57-.66.2-.22.25-.38.38-.63.13-.25.07-.47-.03-.66-.1-.2-.86-2.07-1.18-2.83-.31-.74-.63-.64-.86-.66h-.73c-.25 0-.66.1-1 .47-.35.38-1.31 1.28-1.31 3.12 0 1.83 1.34 3.6 1.53 3.85.19.25 2.63 4.01 6.37 5.63.89.38 1.6.6 2.15.77.9.29 1.72.25 2.37.15.72-.11 2.24-.91 2.56-1.78.32-.86.32-1.6.22-1.77-.09-.17-.35-.27-.73-.47z"/>
+    </svg>
+  </a>
+
+  <!-- Scripts -->
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
   <script>
+    function toggleDrawer(force){
+      const d = document.getElementById('drawer');
+      const o = document.getElementById('overlay');
+      const trigger = document.querySelector('.hamburger');
+      const firstLink = d.querySelector('a');
+      const willOpen = force===undefined ? !d.classList.contains('open') : force;
+      if(willOpen){
+        d.classList.add('open');
+        d.setAttribute('aria-hidden','false');
+        o.classList.add('show');
+        setTimeout(()=>{ firstLink && firstLink.focus(); d.focus(); }, 50);
+      } else {
+        d.classList.remove('open');
+        d.setAttribute('aria-hidden','true');
+        o.classList.remove('show');
+        trigger && trigger.focus();
+      }
+    }
+    function openCalendly(){
+      var url = 'https://calendly.com/unclegery/15min';
+      if(window.Calendly){Calendly.initPopupWidget({url});return;}
+      window.open(url,'_blank');
+    }
+    // Envío del formulario a Google Sheets (fetch)
+    const form = document.getElementById('apply-form');
+    if(form){
+      form.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        const ok = document.getElementById('apply-success');
+        const err = document.getElementById('apply-error');
+        const submitBtn = form.querySelector('button');
+        const originalText = submitBtn.textContent;
+        ok.style.display='none'; err.style.display='none';
+        submitBtn.disabled = true; submitBtn.textContent = 'Enviando…';
+        try{
+          const res = await fetch(form.action, { method:'POST', body:new FormData(form), headers:{'Accept':'application/json'}});
+          if(res.ok){ ok.style.display='block'; form.reset(); }
+          else{ err.style.display='block'; }
+        }catch(e){ err.style.display='block'; }
+        submitBtn.disabled = false; submitBtn.textContent = originalText;
+      });
+    }
     document.getElementById('y').textContent=new Date().getFullYear();
+
+    // Back to top visibility + behavior
+    const backTop = document.getElementById('backTop');
+    window.addEventListener('scroll',()=>{
+      if(window.scrollY > 400){ backTop.style.display='flex'; }
+      else { backTop.style.display='none'; }
+    });
+    backTop && backTop.addEventListener('click',()=>{
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
   </script>
 </body>
 </html>
