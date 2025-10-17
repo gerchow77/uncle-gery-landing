@@ -252,13 +252,15 @@
         <h2>Listo para moverte</h2>
         <p class="sub">Dejame tus datos y te escribo para una mini charla de 15 minutos antes de inscribirte.</p>
         <!-- Google Sheets: pegá tu URL de Apps Script (termina en /exec) -->
-        <form id="apply-form" action="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" method="POST" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <form id="apply-form" action="https://script.google.com/macros/s/YOUR_EXEC_URL/exec" method="POST" style="display:grid;grid-template-columns:1fr 1fr;gap:12px" data-note="IMPORTANTE: pegá aquí tu URL real de Apps Script que termina en /exec. Se envía el ID de tu Sheet como campo oculto.">
           <input name="nombre" aria-label="Nombre" required placeholder="Nombre" style="padding:14px 12px;border-radius:10px;border:1px solid var(--line);background:#0d1016;color:var(--ink)"/>
           <input name="email" aria-label="Email" required type="email" placeholder="Email" style="padding:14px 12px;border-radius:10px;border:1px solid var(--line);background:#0d1016;color:var(--ink)"/>
           <input name="ubicacion" aria-label="País o ciudad" placeholder="País / Ciudad" style="padding:14px 12px;border-radius:10px;border:1px solid var(--line);background:#0d1016;color:var(--ink)"/>
           <input name="idea_7_palabras" aria-label="Tu idea en 7 palabras" placeholder="Tu idea en 7 palabras" style="padding:14px 12px;border-radius:10px;border:1px solid var(--line);background:#0d1016;color:var(--ink)"/>
           <textarea name="objetivo_4_semanas" aria-label="¿Qué te gustaría mover en estas 4 semanas?" placeholder="¿Qué te gustaría mover en estas 4 semanas?" style="grid-column:1/-1;padding:14px 12px;border-radius:10px;border:1px solid var(--line);background:#0d1016;color:var(--ink);min-height:110px"></textarea>
           <input type="hidden" name="origen" value="Landing Uncle Gery" />
+          <!-- ID de tu Google Sheet para que el Apps Script lo use -->
+          <input type="hidden" name="sheetId" value="1-bVy-Zmwm4cEePzENBgiiOsniJUUh7-M6LwpJZRFAbc" />
           <button class="btn" style="grid-column:1/-1">Quiero sumarme al próximo grupo</button>
           <p id="apply-success" class="meta" style="display:none;grid-column:1/-1;color:var(--brand-2)">¡Gracias! Te voy a escribir pronto para coordinar la charla.</p>
           <p id="apply-error" class="meta" style="display:none;grid-column:1/-1;color:#ffb3b3">Ups, algo falló. Escribime por WhatsApp si persiste.</p>
@@ -274,7 +276,7 @@
         <p class="sub">Elegí día y hora y charlamos (usamos Calendly para coordinar).</p>
         <div>
           <a class="btn" href="#" onclick="openCalendly();return false;">Coordinar reunión personal</a>
-          <p class="meta" style="margin-top:8px">Si no se abre el pop‑up: <a href="https://calendly.com/unclegery/15min" target="_blank" rel="noopener">abrir en otra pestaña</a>.</p>
+          <p class="meta" style="margin-top:8px">Si no se abre el pop‑up: <a href="https://calendly.com/unclegery" target="_blank" rel="noopener">abrir en otra pestaña</a>.</p>
         </div>
       </div>
     </div>
@@ -318,9 +320,9 @@
       }
     }
     function openCalendly(){
-      var url = 'https://calendly.com/unclegery/15min';
-      if(window.Calendly){Calendly.initPopupWidget({url});return;}
-      window.open(url,'_blank');
+      var url = 'https://calendly.com/unclegery';
+      // Redirección directa a Calendly (sin popup)
+      window.location.href = url;
     }
     // Envío del formulario a Google Sheets (fetch)
     const form = document.getElementById('apply-form');
@@ -335,9 +337,21 @@
         submitBtn.disabled = true; submitBtn.textContent = 'Enviando…';
         try{
           const res = await fetch(form.action, { method:'POST', body:new FormData(form), headers:{'Accept':'application/json'}});
-          if(res.ok){ ok.style.display='block'; form.reset(); }
-          else{ err.style.display='block'; }
-        }catch(e){ err.style.display='block'; }
+          const ct = res.headers.get('content-type') || '';
+          let payload = null;
+          try{ payload = ct.includes('application/json') ? await res.json() : await res.text(); }catch(_){ /* noop */ }
+          if(res.ok && payload && (payload.ok === true || (typeof payload === 'string' && String(payload).includes('ok')))){
+            ok.style.display='block'; form.reset();
+          } else {
+            console.error('Apps Script error →', { status: res.status, payload });
+            err.textContent = 'Ups, algo falló. Abrí la consola (F12 → Console) para ver el detalle.';
+            err.style.display='block';
+          }
+        }catch(e){
+          console.error('Network/Fetch error →', e);
+          err.textContent = 'Error de conexión. Reintentá o escribime por WhatsApp.';
+          err.style.display='block';
+        }
         submitBtn.disabled = false; submitBtn.textContent = originalText;
       });
     }
@@ -352,6 +366,23 @@
     backTop && backTop.addEventListener('click',()=>{
       window.scrollTo({top:0, behavior:'smooth'});
     });
+
+    // --- mini tests (no visual) ---
+    (function(){
+      try{
+        console.assert(typeof openCalendly === 'function', 'openCalendly no está definida');
+        const f = document.getElementById('apply-form');
+        console.assert(!!f, 'formulario #apply-form no encontrado');
+        if(f){
+          const action = (f.getAttribute('action')||'');
+          if(action.includes('YOUR_EXEC_URL')){
+            console.warn('⚠️ Recordatorio: reemplazá el action del formulario por tu URL /exec de Apps Script.');
+          }
+          const sid = f.querySelector('input[name="sheetId"]');
+          console.assert(!!sid && sid.value, 'sheetId oculto no presente o vacío');
+        }
+      }catch(e){ console.warn('self-test falló', e); }
+    })();
   </script>
 </body>
 </html>
