@@ -20,15 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --bg:#0f1115;          /* fondo oscuro elegante */
-      --card:#171A21;        /* tarjetas */
-      --ink:#EAEFF7;         /* texto principal */
-      --muted:#A8B3C7;       /* texto secundario */
-      --brand:#F49D37;       /* acento cálido (naranja) */
-      --brand-2:#7CF2C8;     /* acento secundario (menta) */
-      --line:#2A2F3A;        /* separadores */
-    }
+    :root{ --bg:#0f1115; --card:#171A21; --ink:#EAEFF7; --muted:#A8B3C7; --brand:#F49D37; --brand-2:#7CF2C8; --line:#2A2F3A }
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
@@ -46,38 +38,31 @@
     .hero p.lead{font-size:18px;color:var(--muted);margin:0 0 22px}
     .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
 
-    /* Section blocks */
     section{padding:64px 0;border-bottom:1px solid var(--line)}
     section h2{font-size:28px;margin:0 0 8px}
     section .sub{color:var(--muted);margin:0 0 24px}
 
-    /* Cards & grids */
     .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}
     .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
     .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 
-    /* Manifesto bullets */
     .m-bullet{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
     .m-bullet h3{margin:0 0 6px;font-size:18px}
     .m-bullet p{margin:0;color:var(--muted)}
 
-    /* Historia cards (alt style) */
     .card-alt{background:#14171f;border-left:4px solid var(--brand-2);border-radius:14px;padding:20px}
     .meta{font-size:13px;color:var(--muted)}
 
-    /* Power Cards */
     .power{position:relative;overflow:hidden}
     .tag{position:absolute;top:12px;right:12px;background:var(--brand-2);color:#0b0f11;font-weight:700;border-radius:999px;padding:4px 10px;font-size:12px}
     .power h4{margin:0 0 6px}
     ul{padding-left:18px;margin:8px 0}
 
-    /* FAQ */
     details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
     summary{cursor:pointer;font-weight:700}
     details + details{margin-top:12px}
 
-    /* Drawer (hamburger) */
     .hamburger{position:fixed;top:16px;left:16px;width:44px;height:44px;border-radius:10px;border:1px solid var(--line);background:rgba(20,22,28,.65);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:1001}
     .hamburger span,.hamburger span:before,.hamburger span:after{content:"";display:block;width:20px;height:2px;background:var(--ink);position:relative;border-radius:2px}
     .hamburger span:before{position:absolute;top:-6px}
@@ -91,36 +76,20 @@
     .overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);opacity:0;visibility:hidden;transition:opacity .2s ease;z-index:999}
     .overlay.show{opacity:1;visibility:visible}
 
-    /* Language Switch */
     #lang-switch{position:fixed;top:16px;right:16px;z-index:1002}
-    #lang-switch button{border:1px solid var(--line);background:rgba(20,22,28,.65);backdrop-filter:blur(6px);color:var(--ink);padding:8px 12px;border-radius:10px;cursor:pointer}
+    #lang-select{border:1px solid var(--line);background:rgba(20,22,28,.65);backdrop-filter:blur(6px);color:var(--ink);padding:8px 12px;border-radius:10px;cursor:pointer}
 
-    /* WhatsApp Floating */
     .wa{position:fixed;right:18px;bottom:18px;width:68px;height:68px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;color:#051b11;font-weight:900;box-shadow:0 10px 24px rgba(0,0,0,.35);z-index:900}
     .wa:hover{transform:translateY(-1px)}
     .wa svg{width:32px;height:32px}
 
-    /* Back to top */
     #backTop{position:fixed;right:18px;bottom:96px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#191d26;color:var(--ink);display:none;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.25);z-index:901;cursor:pointer}
 
-    /* Footer */
     footer{padding:36px 0;color:var(--muted);text-align:center}
 
-    /* Responsive */
-    @media (max-width:980px){
-      .hero-grid{grid-template-columns:1fr}
-      .grid-3{grid-template-columns:1fr 1fr}
-      .grid-2{grid-template-columns:1fr}
-      .cards{grid-template-columns:1fr}
-      .drawer{inset:0 20% 0 0}
-    }
-    @media (max-width:640px){
-      .hero h1{font-size:34px}
-      .grid-3{grid-template-columns:1fr}
-      .drawer{inset:0 0 0 0}
-    }
+    @media (max-width:980px){ .hero-grid{grid-template-columns:1fr} .grid-3{grid-template-columns:1fr 1fr} .grid-2{grid-template-columns:1fr} .cards{grid-template-columns:1fr} .drawer{inset:0 20% 0 0} }
+    @media (max-width:640px){ .hero h1{font-size:34px} .grid-3{grid-template-columns:1fr} .drawer{inset:0 0 0 0} }
 
-    /* Focus styles */
     :focus-visible{outline:2px solid var(--brand-2);outline-offset:2px}
     summary:focus-visible{outline:2px solid var(--brand)}
     input,textarea,button, a.btn{transition:box-shadow .12s ease}
@@ -128,12 +97,15 @@
   </style>
 </head>
 <body>
-  <!-- Language Switch -->
   <div id="lang-switch">
-    <button aria-label="Cambiar idioma" onclick="cycleLang()">🌐 <span id="lang-label">ES</span></button>
+    <label for="lang-select" class="sr-only" style="position:absolute;left:-9999px">Idioma</label>
+    <select id="lang-select" aria-label="Elegir idioma" onchange="selectLang(this.value)">
+      <option value="es">ES</option>
+      <option value="en">EN</option>
+      <option value="pt">PT</option>
+    </select>
   </div>
 
-  <!-- HAMBURGER + DRAWER -->
   <button class="hamburger" aria-label="Abrir menú" aria-controls="drawer" onclick="toggleDrawer()"><span></span></button>
   <aside id="drawer" class="drawer" aria-hidden="true" tabindex="-1">
     <h3>Menú</h3>
@@ -148,13 +120,12 @@
   </aside>
   <div id="overlay" class="overlay" onclick="toggleDrawer(false)"></div>
 
-  <!-- HERO -->
   <header class="hero">
     <div class="wrap hero-grid">
       <div>
         <span class="pill">🚀 Taller de Uncle Gery · Método MOV</span>
         <h1 data-i18n="hero.title">No hace falta tener todo listo para empezar.<br/>Hace falta <span style="color:var(--brand)">dar el primer paso</span> y acá te muestro cómo...</h1>
-        <p class="lead" data-i18n="hero.lead">Soy <strong>Uncle Gery</strong>. En 4 encuentros te acompaño a sacar adelante tu emprendimiento o idea: la contamos, la observamos y la validamos. <br/>Sin vueltas. Con humor. Y con resultados reales.</p>
+        <p class="lead" data-i18n="hero.lead">In 4 sessions, we take your idea from thought to action. No BS. Lots of humor. Real results.</p>
         <div class="cta">
           <a data-i18n="cta.move" href="#aplicar" class="btn">Quiero mover mi idea</a>
           <a data-i18n="cta.how" href="#taller" class="btn btn-outline">Ver cómo funciona</a>
@@ -164,7 +135,6 @@
     </div>
   </header>
 
-  <!-- MANIFIESTO en tarjetas -->
   <section id="manifiesto">
     <div class="wrap">
       <h2 data-i18n="manifesto.title">💬 Manifiesto de Uncle Gery</h2>
@@ -181,26 +151,24 @@
     </div>
   </section>
 
-  <!-- APORTE A LA COMUNIDAD (tarjetas alt) -->
   <section id="historia">
     <div class="wrap">
       <h2 data-i18n="impact.title">🧭 Mi aporte a la comunidad</h2>
       <p class="sub" data-i18n="impact.sub">Años de crear espacios donde la gente se anima a hacer, aprender y compartir.</p>
       <div class="cards">
-        <div class="card-alt"><h4>Club de la Comedia (2013–2018)</h4><p class="meta">Primer club y escuela de stand up en Tucumán. Formamos comediantes y un circuito que aún vive.</p></div>
-        <div class="card-alt"><h4>Prestario de Bicicletas (2015–2018)</h4><p class="meta">Sistema gratuito de préstamos de bicicletas en locales aliados. Movilidad y comunidad sobre ruedas.</p></div>
-        <div class="card-alt"><h4>Hackathon Tucumán (2016–2017)</h4><p class="meta">Competencia de innovación abierta donde estudiantes resolvían desafíos reales en 24 horas.</p></div>
-        <div class="card-alt"><h4>Rally Latinoamericano de Innovación (2016–2019)</h4><p class="meta">Organizador y mentor. Conectando mentes creativas de toda Latinoamérica.</p></div>
-        <div class="card-alt"><h4>24hs de Innovación (2013–2017)</h4><p class="meta">Evento de pensamiento rápido y trabajo en equipo para estudiantes universitarios.</p></div>
-        <div class="card-alt"><h4>RÍES – Rally de Innovación Escolar (2018)</h4><p class="meta">Primer evento de innovación para escuelas secundarias. Creatividad desde la base.</p></div>
-        <div class="card-alt"><h4>TEDx Universidad Nacional de Tucumán (2017–2018)</h4><p class="meta">Organizador, presentador y coach de oradores. Ideas que valía la pena compartir.</p></div>
-        <div class="card-alt"><h4>FuckUp Nights (2014–2018)</h4><p class="meta">Coorganizador y presentador durante 6 años. Celebrar el error para aprender juntos.</p></div>
-        <div class="card-alt"><h4>Incuba UNT (2016–2019)</h4><p class="meta">Creador y asesor de más de 300 emprendedores desde la incubadora de la Universidad Nacional de Tucumán.</p></div>
+        <div class="card-alt"><h4 data-i18n="impact.c1.t">Club de la Comedia (2013–2018)</h4><p class="meta" data-i18n="impact.c1.d">Primer club y escuela de stand up en Tucumán. Formamos comediantes y un circuito que aún vive.</p></div>
+        <div class="card-alt"><h4 data-i18n="impact.c2.t">Prestario de Bicicletas (2015–2018)</h4><p class="meta" data-i18n="impact.c2.d">Sistema gratuito de préstamos de bicicletas en locales aliados. Movilidad y comunidad sobre ruedas.</p></div>
+        <div class="card-alt"><h4 data-i18n="impact.c3.t">Hackathon Tucumán (2016–2017)</h4><p class="meta" data-i18n="impact.c3.d">Competencia de innovación abierta donde estudiantes resolvían desafíos reales en 24 horas.</p></div>
+        <div class="card-alt"><h4 data-i18n="impact.c4.t">Rally Latinoamericano de Innovación (2016–2019)</h4><p class="meta" data-i18n="impact.c4.d">Organizador y mentor. Conectando mentes creativas de toda Latinoamérica.</p></div>
+        <div class="card-alt"><h4 data-i18n="impact.c5.t">24hs de Innovación (2013–2017)</h4><p class="meta" data-i18n="impact.c5.d">Evento de pensamiento rápido y trabajo en equipo para estudiantes universitarios.</p></div>
+        <div class="card-alt"><h4 data-i18n="impact.c6.t">RÍES – Rally de Innovación Escolar (2018)</h4><p class="meta" data-i18n="impact.c6.d">Primer evento de innovación para escuelas secundarias. Creatividad desde la base.</p></div>
+        <div class="card-alt"><h4 data-i18n="impact.c7.t">TEDx Universidad Nacional de Tucumán (2017–2018)</h4><p class="meta" data-i18n="impact.c7.d">Organizador, presentador y coach de oradores. Ideas que valía la pena compartir.</p></div>
+        <div class="card-alt"><h4 data-i18n="impact.c8.t">FuckUp Nights (2014–2018)</h4><p class="meta" data-i18n="impact.c8.d">Coorganizador y presentador durante 6 años. Celebrar el error para aprender juntos.</p></div>
+        <div class="card-alt"><h4 data-i18n="impact.c9.t">Incuba UNT (2016–2019)</h4><p class="meta" data-i18n="impact.c9.d">Creador y asesor de más de 300 emprendedores desde la incubadora de la Universidad Nacional de Tucumán.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- EMPRENDIMIENTOS Y FRACASOS (Cartas de poder) -->
   <section id="fracasos">
     <div class="wrap">
       <h2 data-i18n="fail.title">🧪 Sobre mis emprendimientos y fracasos</h2>
@@ -216,7 +184,6 @@
     </div>
   </section>
 
-  <!-- TALLER -->
   <section id="taller">
     <div class="wrap">
       <h2 data-i18n="workshop.title">🧰 El Taller — Método MOV (4×90’)</h2>
@@ -243,7 +210,6 @@
     </div>
   </section>
 
-  <!-- FAQ (resumen) -->
   <section id="faq">
     <div class="wrap">
       <h2 data-i18n="faq.title">💬 FAQ — Preguntas frecuentes</h2>
@@ -253,25 +219,25 @@
     </div>
   </section>
 
-  <!-- CTA / FORM -->
   <section id="aplicar">
     <div class="wrap">
       <div class="card">
         <h2 data-i18n="form.title">¿Listo para moverte?</h2>
         <p class="sub" data-i18n="form.subtitle">Dejame tus datos y te escribo para una mini charla de 15 minutos antes de inscribirte.</p>
-        <!-- FormSubmit (envío por email) -->
         <form id="apply-form" action="https://formsubmit.co/gerchow77@gmail.com" method="POST" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
           <input name="nombre" aria-label="Nombre" required placeholder="Nombre" data-i18n-placeholder="form.name" style="padding:14px 12px;border-radius:10px;border:1px solid var(--line);background:#0d1016;color:var(--ink)"/>
           <input name="email" aria-label="Email" required type="email" placeholder="Email" data-i18n-placeholder="form.email" style="padding:14px 12px;border-radius:10px;border:1px solid var(--line);background:#0d1016;color:var(--ink)"/>
           <input name="ubicacion" aria-label="País o ciudad" placeholder="País / Ciudad" data-i18n-placeholder="form.location" style="padding:14px 12px;border-radius:10px;border:1px solid var(--line);background:#0d1016;color:var(--ink)"/>
           <input name="idea_7_palabras" aria-label="Tu idea en 7 palabras" placeholder="Tu idea en 7 palabras" data-i18n-placeholder="form.idea7" style="padding:14px 12px;border-radius:10px;border:1px solid var(--line);background:#0d1016;color:var(--ink)"/>
           <textarea name="objetivo_4_semanas" aria-label="¿Qué te gustaría mover en estas 4 semanas?" placeholder="¿Qué te gustaría mover en estas 4 semanas?" data-i18n-placeholder="form.goal" style="grid-column:1/-1;padding:14px 12px;border-radius:10px;border:1px solid var(--line);background:#0d1016;color:var(--ink);min-height:110px"></textarea>
           <input type="hidden" name="origen" value="Landing Uncle Gery" />
-          <!-- FormSubmit config -->
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_subject" value="Nuevo interesado — Uncle Gery" />
-          <input type="hidden" name="_next" value="https://unclegery.com/gracias.html" />
+          <input type="hidden" name="_autoresponse" value="¡Gracias por escribir a Uncle Gery! En breve te contacto para coordinar una charla de 15 minutos." />
+          <input type="hidden" name="_next" value="/gracias.html" />
           <button class="btn" style="grid-column:1/-1" data-i18n="form.cta">Quiero sumarme al próximo grupo</button>
           <p id="apply-success" class="meta" style="display:none;grid-column:1/-1;color:var(--brand-2)">¡Gracias! Te voy a escribir pronto para coordinar la charla.</p>
           <p id="apply-error" class="meta" style="display:none;grid-column:1/-1;color:#ffb3b3">Ups, algo falló. Escribime por WhatsApp si persiste.</p>
@@ -286,7 +252,6 @@
     </div>
   </footer>
 
-  <!-- Floating buttons -->
   <button id="backTop" aria-label="Volver arriba" title="Volver arriba">↑</button>
   <a class="wa" href="https://wa.me/972522563659?text=Hola%20Uncle%20Gery%2C%20quiero%20mover%20mi%20idea" target="_blank" aria-label="WhatsApp" title="Escribime por WhatsApp">
     <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
@@ -296,7 +261,6 @@
     </svg>
   </a>
 
-  <!-- Scripts -->
   <script>
     function toggleDrawer(force){
       const d = document.getElementById('drawer');
@@ -317,29 +281,28 @@
       }
     }
 
-    // Back to top visibility + behavior
     const backTop = document.getElementById('backTop');
-    window.addEventListener('scroll',()=>{
-      if(window.scrollY > 400){ backTop.style.display='flex'; }
-      else { backTop.style.display='none'; }
-    });
-    backTop && backTop.addEventListener('click',()=>{
-      window.scrollTo({top:0, behavior:'smooth'});
-    });
+    window.addEventListener('scroll',()=>{ backTop.style.display = window.scrollY>400 ? 'flex' : 'none'; });
+    backTop && backTop.addEventListener('click',()=>{ window.scrollTo({top:0, behavior:'smooth'}); });
 
-    // FormSubmit UX
     const form = document.getElementById('apply-form');
     if(form){
-      form.addEventListener('submit', (e)=>{
+      const next = form.querySelector('input[name="_next"]');
+      if(next){
+        const lang = localStorage.getItem('lang') || 'es';
+        const url = new URL(next.value, location.origin);
+        url.searchParams.set('lang', lang);
+        next.value = url.pathname + url.search;
+      }
+      form.addEventListener('submit', ()=>{
         const btn = form.querySelector('button');
-        if(btn){ btn.disabled = true; btn.textContent = 'Enviando…'; }
+        if(btn){ btn.disabled = true; btn.textContent = (localStorage.getItem('lang')||'es')==='en' ? 'Sending…' : ((localStorage.getItem('lang')||'es')==='pt' ? 'Enviando…' : 'Enviando…'); }
       });
     }
 
     document.getElementById('y').textContent=new Date().getFullYear();
   </script>
 
-  <!-- i18n dictionaries + logic -->
   <script>
     const DICT = {
       es: {
@@ -412,7 +375,7 @@
       },
       en: {
         "hero.title": "You don’t need everything ready to start.<br/>You need to <span style='color:var(--brand)'>take the first step</span> — I’ll show you how.",
-        "hero.lead": "I’m <strong>Uncle Gery</strong>. In 4 sessions I help you move your project or idea forward: we tell it, observe it and validate it. <br>No fluff. With humor. Real outcomes.",
+        "hero.lead": "In 4 sessions, we take your idea from thought to action. No BS. Lots of humor. Real results.",
         "cta.move": "I want to move my idea",
         "cta.how": "See how it works",
         "cta.meet": "Schedule a personal chat",
@@ -427,30 +390,30 @@
         "manifesto.title": "💬 Uncle Gery’s Manifesto",
         "manifesto.sub": "Entrepreneurship isn’t taught: it’s lived. And sometimes, survived.",
         "manifesto.b1.t": "1) If you don’t move, you rust",
-        "manifesto.b1.d": "Waiting for perfection is never starting. Starting badly beats not starting.",
+        "manifesto.b1.d": "Waiting for perfection keeps you stuck. Starting badly beats not starting.",
         "manifesto.b2.t": "2) Start with what you have",
-        "manifesto.b2.d": "No one begins with everything solved. You learn in the water, not from the edge.",
-        "manifesto.b3.t": "3) Fail fast and cheap",
-        "manifesto.b3.d": "Fail early, learn cheaply. The expensive thing is realizing too late.",
+        "manifesto.b2.d": "Start where you are and use what you have. Nobody begins with everything figured out — you learn by getting in the water, not by standing on the edge.",
+        "manifesto.b3.t": "3) Fail fast, fail cheap",
+        "manifesto.b3.d": "Fail early, learn cheaply — the costly mistake is realizing too late.",
         "manifesto.b4.t": "4) No one builds alone",
-        "manifesto.b4.d": "A safe space where people listen, push and lend you their eyes.",
+        "manifesto.b4.d": "No one builds alone. A safe space where people listen, challenge you, and share their perspective.",
         "manifesto.b5.t": "5) The group is the lab",
-        "manifesto.b5.d": "We don’t compete: we build. The outcome may be a business or a new lens.",
+        "manifesto.b5.d": "The group is the lab. We don’t compete — we build. The outcome might be a business, or a new lens.",
         "manifesto.b6.t": "6) Honesty over perfection",
-        "manifesto.b6.d": "I don’t have all the answers. I have scars and the will to share.",
-        "manifesto.sum": "<strong>In short:</strong> I don’t sell you success. <strong>I push you to move.</strong>",
+        "manifesto.b6.d": "Honesty over perfection. I don’t have all the answers — just scars and the will to share.",
+        "manifesto.sum": "<strong>Bottom line:</strong> I don’t sell success. <strong>I push you to move.</strong>",
 
-        "impact.title": "🧭 My community impact",
-        "impact.sub": "Years creating spaces where people dare to do, learn and share.",
+        "impact.title": "🧭 What I’ve built along the way",
+        "impact.sub": "Years creating spaces where people dare to do, learn, and share.",
 
         "fail.title": "🧪 My ventures & failures",
-        "fail.sub": "Power cards: what I did well, what I did wrong, what I’d change and what I learned.",
+        "fail.sub": "Power Cards: what I did well, what I did wrong, what I’d change, and what I learned.",
 
         "workshop.title": "🧰 The Workshop — MOV Method (4×90’)",
-        "workshop.sub": "Movement · Observation · Validation. Groups of 4–5 people. Outcome: your Movement Map + 2 real micro-validations.",
+        "workshop.sub": "Movement. Observation. Validation. Small groups (4–5 people). You’ll leave with your own Movement Map and two real micro-validations.",
         "workshop.goal": "What you’ll achieve",
-        "workshop.g1": "Tell your idea clearly and get honest feedback.",
-        "workshop.g2": "Design and run simple micro‑experiments.",
+        "workshop.g1": "Share your idea clearly and get honest feedback.",
+        "workshop.g2": "Design and run simple micro-experiments.",
         "workshop.g3": "Complete your <em>Movement Map</em> and the group <em>Logbook</em>.",
         "workshop.how": "How it works",
         "workshop.c1": "<strong>Session 1:</strong> from thought to movement.",
@@ -467,7 +430,7 @@
         "faq.a3": "4–5 people. Enough to be heard; small enough not to hide.",
 
         "form.title": "Ready to move?",
-        "form.subtitle": "Leave your info and I’ll text you for a 15‑minute chat before enrolling.",
+        "form.subtitle": "Leave your info *here* and I’ll text you for a 15-minute chat before enrolling.",
         "form.name": "Name",
         "form.email": "Email",
         "form.location": "Country / City",
@@ -480,7 +443,7 @@
       },
       pt: {
         "hero.title": "Você não precisa de tudo pronto para começar.<br/>Você precisa <span style='color:var(--brand)'>dar o primeiro passo</span> — eu te mostro como.",
-        "hero.lead": "Sou o <strong>Uncle Gery</strong>. Em 4 encontros eu te ajudo a tirar seu projeto ou ideia do papel: contamos, observamos e validamos. <br>Sem enrolação. Com humor. Resultados reais.",
+        "hero.lead": "Sou o Uncle Gery. Em 4 encontros eu te ajudo a tirar seu projeto ou ideia do papel: contamos, observamos e validamos. <br>Sem enrolação. Com humor. Resultados reais.",
         "cta.move": "Quero mover minha ideia",
         "cta.how": "Ver como funciona",
         "cta.meet": "Agendar conversa pessoal",
@@ -515,7 +478,7 @@
         "fail.sub": "Cartas de poder: o que fiz bem, o que fiz mal, o que mudaria e o que aprendi.",
 
         "workshop.title": "🧰 O Workshop — Método MOV (4×90’)",
-        "workshop.sub": "Movimento · Observação · Validação. Grupos de 4–5 pessoas. Entrega: seu Mapa de Movimento + 2 microvalidações reais.",
+        "workshop.sub": "Movimento. Observação. Validação. Grupos de 4–5 pessoas. Entrega: seu Mapa de Movimento + 2 microvalidações reais.",
         "workshop.goal": "O que você vai alcançar",
         "workshop.g1": "Explicar sua ideia com clareza e receber feedback honesto.",
         "workshop.g2": "Desenhar e executar microexperimentos simples.",
@@ -552,12 +515,10 @@
 
     function setLang(lang){
       const dict = DICT[lang] || DICT.es;
-      // textos
       document.querySelectorAll('[data-i18n]').forEach(el=>{
         const key = el.getAttribute('data-i18n');
         if(dict[key]!==undefined){ el.innerHTML = dict[key]; }
       });
-      // placeholders
       PLACEHOLDER_ATTRS.forEach(attr=>{
         document.querySelectorAll('['+attr+']').forEach(el=>{
           const key = el.getAttribute(attr);
@@ -565,24 +526,22 @@
         });
       });
       localStorage.setItem('lang', lang);
-      const lbl = document.getElementById('lang-label');
-      if(lbl){ lbl.textContent = lang.toUpperCase(); }
       document.documentElement.lang = lang;
+      const sel = document.getElementById('lang-select'); if(sel) sel.value = lang;
+      // update _next lang param live if present
+      const form = document.getElementById('apply-form');
+      if(form){ const next = form.querySelector('input[name="_next"]'); if(next){ const u=new URL(next.value, location.origin); u.searchParams.set('lang', lang); next.value = u.pathname + u.search; } }
     }
 
-    function cycleLang(){
-      const list = ["es","en","pt"];
-      const cur = localStorage.getItem('lang') || "es";
-      const next = list[(list.indexOf(cur)+1)%list.length];
-      setLang(next);
-    }
+    function selectLang(lang){ setLang(lang); }
 
     (function initLang(){
       const prefer = localStorage.getItem('lang') || (navigator.language||'es').slice(0,2);
-      setLang(["es","en","pt"].includes(prefer)?prefer:"es");
+      const lang = ["es","en","pt"].includes(prefer)?prefer:"es";
+      setLang(lang);
+      const sel = document.getElementById('lang-select'); if(sel) sel.value = lang;
     })();
 
-    // Footer year
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
