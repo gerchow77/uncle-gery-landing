@@ -20,15 +20,18 @@
     .btn{display:inline-block;background:#F49D37;color:#000;padding:12px 20px;border-radius:12px;margin:10px;text-decoration:none;font-weight:700}
     .wa{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#051b11;padding:12px 20px;border-radius:12px;text-decoration:none;font-weight:700}
     footer{color:#A8B3C7;margin:40px 0}
-    select{position:fixed;top:16px;right:16px;padding:6px 12px;background:#171A21;color:#EAEFF7;border:1px solid #2A2F3A;border-radius:10px}
+    .lang-menu{position:fixed;top:16px;right:16px;background:#171A21;color:#EAEFF7;border:1px solid #2A2F3A;border-radius:10px;padding:6px 12px;cursor:pointer}
+    .lang-menu select{background:transparent;color:inherit;border:none;font:inherit}
   </style>
 </head>
 <body>
-  <select id="lang-select">
-    <option value="es">ES</option>
-    <option value="en">EN</option>
-    <option value="pt">PT</option>
-  </select>
+  <div class="lang-menu">
+    🌐 <select id="lang-select">
+      <option value="es">Español</option>
+      <option value="en">English</option>
+      <option value="pt">Português</option>
+    </select>
+  </div>
 
   <header>
     <h1 id="title">¡Gracias por escribir!</h1>
