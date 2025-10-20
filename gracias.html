@@ -3,34 +3,84 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>¡Gracias! — Uncle Gery</title>
-  <meta name="robots" content="noindex" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Gracias — Uncle Gery</title>
+  <meta name="description" content="Gracias por escribir a Uncle Gery. En breve te contacto para coordinar una charla de 15 minutos." />
+  <meta property="og:title" content="Gracias — Uncle Gery" />
+  <meta property="og:description" content="No te vendo éxito. Te empujo a moverte." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://unclegery.com/og-image.jpg" />
+  <link rel="icon" href="/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-    :root{--bg:#0f1115;--ink:#EAEFF7;--muted:#A8B3C7;--card:#171A21;--brand:#F49D37;--line:#2A2F3A}
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--ink);display:grid;min-height:100vh;place-items:center}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;max-width:720px;margin:24px}
-    h1{font-size:36px;margin-bottom:8px}
-    p{color:var(--muted);margin:8px 0 18px}
-    .btn{display:inline-block;padding:12px 16px;border-radius:12px;background:var(--brand);color:#141414;font-weight:700}
-    .wa{display:inline-flex;align-items:center;gap:8px;margin-left:12px}
-    .wa svg{width:20px;height:20px}
+    body{font-family:Inter,sans-serif;background:#0f1115;color:#EAEFF7;line-height:1.6;margin:0;padding:0;text-align:center}
+    header{padding:60px 20px;border-bottom:1px solid #2A2F3A;background:radial-gradient(900px 420px at 70% -10%, rgba(124,242,200,.08), transparent)}
+    h1{font-size:40px;margin:20px 0 10px}
+    p{color:#A8B3C7;margin:0 0 20px}
+    .card{background:#171A21;border:1px solid #2A2F3A;border-radius:16px;padding:30px;max-width:600px;margin:40px auto}
+    .btn{display:inline-block;background:#F49D37;color:#000;padding:12px 20px;border-radius:12px;margin:10px;text-decoration:none;font-weight:700}
+    .wa{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#051b11;padding:12px 20px;border-radius:12px;text-decoration:none;font-weight:700}
+    footer{color:#A8B3C7;margin:40px 0}
+    select{position:fixed;top:16px;right:16px;padding:6px 12px;background:#171A21;color:#EAEFF7;border:1px solid #2A2F3A;border-radius:10px}
   </style>
 </head>
 <body>
-  <main class="card">
-    <h1>¡Gracias! 🙌</h1>
-    <p>Recibí tu mensaje. Te voy a escribir pronto para coordinar una charla de 15 minutos. — <strong>Uncle Gery</strong></p>
-    <p>
-      <a class="btn" href="/">Volver al inicio</a>
-      <a class="wa" href="https://wa.me/972522563659?text=Hola%20Uncle%20Gery%2C%20te%20mand%C3%A9%20el%20formulario" target="_blank" rel="noopener" aria-label="WhatsApp">
-        <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><title>WhatsApp</title><path fill="#075E54" d="M16 .5C7.44.5.5 7.44.5 16c0 2.74.71 5.32 2.07 7.63L.5 31.5l8.12-2.02A15.4 15.4 0 0 0 16 31.5C24.56 31.5 31.5 24.56 31.5 16S24.56.5 16 .5z"/><path fill="#25D366" d="M24.26 18.77c-.38-.2-2.24-1.1-2.59-1.23-.35-.13-.6-.2-.86.2-.25.38-.98 1.23-1.2 1.48-.22.25-.44.28-.82.1-.38-.2-1.62-.6-3.08-1.9-1.14-1.01-1.9-2.26-2.13-2.63-.22-.38-.02-.58.17-.77.17-.17.38-.44.57-.66.2-.22.25-.38.38-.63.13-.25.07-.47-.03-.66-.1-.2-.86-2.07-1.18-2.83-.31-.74-.63-.64-.86-.66h-.73c-.25 0-.66.1-1 .47-.35.38-1.31 1.28-1.31 3.12 0 1.83 1.34 3.6 1.53 3.85.19.25 2.63 4.01 6.37 5.63.89.38 1.6.6 2.15.77.9.29 1.72.25 2.37.15.72-.11 2.24-.91 2.56-1.78.32-.86.32-1.6.22-1.77-.09-.17-.35-.27-.73-.47z"/></svg>
-        Escribime por WhatsApp
-      </a>
-    </p>
+  <select id="lang-select">
+    <option value="es">ES</option>
+    <option value="en">EN</option>
+    <option value="pt">PT</option>
+  </select>
+
+  <header>
+    <h1 id="title">¡Gracias por escribir!</h1>
+    <p id="lead">En breve te contacto para coordinar una mini charla de 15 minutos.</p>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2 id="whatnext">¿Qué sigue?</h2>
+      <ul id="steps" style="text-align:left;display:inline-block;text-align:left;margin:20px auto;padding-left:20px"></ul>
+      <a id="homeBtn" class="btn" href="/">Volver al sitio</a>
+      <a id="waBtn" class="wa" href="https://wa.me/972522563659?text=Hola%20Uncle%20Gery%2C%20vengo%20de%20la%20landing%20y%20quiero%20coordinar%20una%20charla" target="_blank">WhatsApp</a>
+      <p id="footnote" style="margin-top:20px"></p>
+    </div>
   </main>
+
+  <footer>
+    <p>© <span id="y"></span> Uncle Gery · <span id="claim">No te vendo éxito. Te empujo a moverte.</span></p>
+  </footer>
+
+  <script>
+    const D = {
+      es:{title:"¡Gracias por escribir!",lead:"En breve te contacto para coordinar una mini charla de 15 minutos.",whatnext:"¿Qué sigue?",steps:["Te llega un correo de confirmación.","Te escribo por email o WhatsApp para coordinar.","Podés hablarme ahora por WhatsApp."],homeBtn:"Volver al sitio",footnote:"Si algo salió mal, escribime por WhatsApp. Respondo rápido.",claim:"No te vendo éxito. Te empujo a moverte."},
+      en:{title:"Thanks for reaching out!",lead:"I’ll contact you shortly to schedule a 15‑minute chat.",whatnext:"What’s next?",steps:["You'll get a confirmation email.","I'll reach out via email or WhatsApp.","You can message me now on WhatsApp."],homeBtn:"Back to site",footnote:"If something went wrong, ping me on WhatsApp.",claim:"I don’t sell you success. I push you to move."},
+      pt:{title:"Obrigado pela mensagem!",lead:"Em breve entro em contato para marcar um papo de 15 minutos.",whatnext:"E agora?",steps:["Você vai receber um e‑mail de confirmação.","Eu retorno por e‑mail ou WhatsApp.","Pode me chamar no WhatsApp agora."],homeBtn:"Voltar ao site",footnote:"Se algo deu errado, me chama no WhatsApp.",claim:"Não te vendo sucesso. Te empurro para agir."}
+    };
+
+    function applyLang(lang){
+      const t=D[lang]||D.es;
+      document.getElementById('title').textContent=t.title;
+      document.getElementById('lead').textContent=t.lead;
+      document.getElementById('whatnext').textContent=t.whatnext;
+      document.getElementById('steps').innerHTML=t.steps.map(s=>`<li>${s}</li>`).join('');
+      document.getElementById('homeBtn').textContent=t.homeBtn;
+      document.getElementById('footnote').textContent=t.footnote;
+      document.getElementById('claim').textContent=t.claim;
+      document.getElementById('lang-select').value=lang;
+      document.documentElement.lang=lang;
+    }
+
+    (function init(){
+      const params=new URLSearchParams(location.search);
+      let lang=params.get('lang')||localStorage.getItem('lang')||'es';
+      if(!['es','en','pt'].includes(lang)) lang='es';
+      applyLang(lang);
+      document.getElementById('lang-select').addEventListener('change',e=>{
+        const newLang=e.target.value;localStorage.setItem('lang',newLang);
+        const url=new URL(location.href);url.searchParams.set('lang',newLang);
+        history.replaceState({},'',url);applyLang(newLang);
+      });
+      document.getElementById('y').textContent=new Date().getFullYear();
+    })();
+  </script>
 </body>
 </html>
