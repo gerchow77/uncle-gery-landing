@@ -14,9 +14,6 @@
   <link rel="canonical" href="https://unclegery.com/" />
   <link rel="icon" href="/favicon.ico" />
 
-  <!-- Plausible Analytics -->
-  <script defer data-domain="unclegery.com" src="https://plausible.io/js/script.js"></script>
-
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,7 +42,7 @@
 
     header.hero{padding:72px 0 48px;border-bottom:1px solid var(--line);background:radial-gradient(1200px 600px at 70% -10%, rgba(124,242,200,.08), transparent)}
     .hero-grid{display:grid;grid-template-columns:1fr;gap:28px;align-items:center}
-    .hero h1{font-size:44px;line-height:1.12;margin:10px 0 16px}
+    .hero h1{font-size:44px;line-height:1.2;margin:10px 0 16px}
     .hero p.lead{font-size:18px;color:var(--muted);margin:0 0 22px}
     .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
 
@@ -94,13 +91,20 @@
     .overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);opacity:0;visibility:hidden;transition:opacity .2s ease;z-index:999}
     .overlay.show{opacity:1;visibility:visible}
 
+    /* Language Switch */
+    #lang-switch{position:fixed;top:16px;right:16px;z-index:1002}
+    #lang-switch button{border:1px solid var(--line);background:rgba(20,22,28,.65);backdrop-filter:blur(6px);color:var(--ink);padding:8px 12px;border-radius:10px;cursor:pointer}
+
     /* WhatsApp Floating */
-    .wa{position:fixed;right:18px;bottom:18px;width:54px;height:54px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;color:#051b11;font-weight:900;box-shadow:0 10px 24px rgba(0,0,0,.35);z-index:900}
+    .wa{position:fixed;right:18px;bottom:18px;width:68px;height:68px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;color:#051b11;font-weight:900;box-shadow:0 10px 24px rgba(0,0,0,.35);z-index:900}
     .wa:hover{transform:translateY(-1px)}
-    .wa svg{width:28px;height:28px}
+    .wa svg{width:32px;height:32px}
 
     /* Back to top */
-    #backTop{position:fixed;right:18px;bottom:86px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#191d26;color:var(--ink);display:none;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.25);z-index:901;cursor:pointer}
+    #backTop{position:fixed;right:18px;bottom:96px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#191d26;color:var(--ink);display:none;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.25);z-index:901;cursor:pointer}
+
+    /* Footer */
+    footer{padding:36px 0;color:var(--muted);text-align:center}
 
     /* Responsive */
     @media (max-width:980px){
@@ -124,18 +128,22 @@
   </style>
 </head>
 <body>
+  <!-- Language Switch -->
+  <div id="lang-switch">
+    <button aria-label="Cambiar idioma" onclick="cycleLang()">🌐 <span id="lang-label">ES</span></button>
+  </div>
+
   <!-- HAMBURGER + DRAWER -->
-  <button class="hamburger" aria-label="Abrir menú" onclick="toggleDrawer()"><span></span></button>
+  <button class="hamburger" aria-label="Abrir menú" aria-controls="drawer" onclick="toggleDrawer()"><span></span></button>
   <aside id="drawer" class="drawer" aria-hidden="true" tabindex="-1">
     <h3>Menú</h3>
     <nav>
-      <a href="#aplicar" onclick="toggleDrawer(false)">Quiero mover mi idea</a>
-      <a href="#fracasos" onclick="toggleDrawer(false)">Sobre mis emprendimientos y fracasos</a>
-      <a href="#historia" onclick="toggleDrawer(false)">Mi aporte a la comunidad</a>
-      <a href="#manifiesto" onclick="toggleDrawer(false)">Manifiesto</a>
-      <a href="#taller" onclick="toggleDrawer(false)">El Taller</a>
-      <a href="#faq" onclick="toggleDrawer(false)">FAQ</a>
-      <a href="#contacto" onclick="toggleDrawer(false)">Contacto</a>
+      <a data-i18n="menu.apply" href="#aplicar" onclick="toggleDrawer(false)">Quiero mover mi idea</a>
+      <a data-i18n="menu.failcards" href="#fracasos" onclick="toggleDrawer(false)">Sobre mis emprendimientos y fracasos</a>
+      <a data-i18n="menu.impact" href="#historia" onclick="toggleDrawer(false)">Mi aporte a la comunidad</a>
+      <a data-i18n="menu.manifesto" href="#manifiesto" onclick="toggleDrawer(false)">Manifiesto</a>
+      <a data-i18n="menu.workshop" href="#taller" onclick="toggleDrawer(false)">El Taller</a>
+      <a data-i18n="menu.faq" href="#faq" onclick="toggleDrawer(false)">FAQ</a>
     </nav>
   </aside>
   <div id="overlay" class="overlay" onclick="toggleDrawer(false)"></div>
@@ -145,12 +153,12 @@
     <div class="wrap hero-grid">
       <div>
         <span class="pill">🚀 Taller de Uncle Gery · Método MOV</span>
-        <h1>No hace falta tener todo listo para empezar.<br/>Hace falta <span style="color:var(--brand)">dar el primer paso</span> y acá te mostramos cómo...</h1>
-        <p class="lead">Soy <strong>Uncle Gery</strong>. En 4 encuentros en grupos de 4–5 personas te acompaño a mover tu idea: la contamos, la observamos y la validamos. <br/>Sin humo. Con humor. Y con resultados reales.</p>
+        <h1 data-i18n="hero.title">No hace falta tener todo listo para empezar.<br/>Hace falta <span style="color:var(--brand)">dar el primer paso</span> y acá te muestro cómo...</h1>
+        <p class="lead" data-i18n="hero.lead">Soy <strong>Uncle Gery</strong>. En 4 encuentros te acompaño a sacar adelante tu emprendimiento o idea: la contamos, la observamos y la validamos. <br/>Sin vueltas. Con humor. Y con resultados reales.</p>
         <div class="cta">
-          <a href="#aplicar" class="btn">Quiero mover mi idea</a>
-          <a href="#taller" class="btn btn-outline">Ver cómo funciona</a>
-          <a href="#contacto" class="btn btn-outline">Coordinar reunión personal</a>
+          <a data-i18n="cta.move" href="#aplicar" class="btn">Quiero mover mi idea</a>
+          <a data-i18n="cta.how" href="#taller" class="btn btn-outline">Ver cómo funciona</a>
+          <a data-i18n="cta.meet" class="btn btn-outline" href="https://wa.me/972522563659?text=Hola%20Uncle%20Gery%2C%20quiero%20coordinar%20una%20reuni%C3%B3n%20personal" target="_blank" rel="noopener">Coordinar reunión personal</a>
         </div>
       </div>
     </div>
@@ -159,25 +167,25 @@
   <!-- MANIFIESTO en tarjetas -->
   <section id="manifiesto">
     <div class="wrap">
-      <h2>💬 Manifiesto de Uncle Gery</h2>
-      <p class="sub">Emprender no se enseña: se vive. Y a veces, se sobrevive.</p>
+      <h2 data-i18n="manifesto.title">💬 Manifiesto de Uncle Gery</h2>
+      <p class="sub" data-i18n="manifesto.sub">Emprender no se enseña: se vive. Y a veces, se sobrevive.</p>
       <div class="grid-3">
-        <div class="m-bullet"><h3>1) El que no se mueve se oxida</h3><p>Esperar lo perfecto es no empezar nunca. Empezar mal es mejor que no empezar.</p></div>
-        <div class="m-bullet"><h3>2) Empezar con lo que hay</h3><p>Nadie arranca con todo resuelto. Se aprende en el agua, no mirando la pileta.</p></div>
-        <div class="m-bullet"><h3>3) Equivocarse rápido y barato</h3><p>Fallá pronto, aprendé barato. Lo caro es tardar en darse cuenta.</p></div>
-        <div class="m-bullet"><h3>4) Nadie emprende solo</h3><p>Un espacio seguro donde te escuchan, te empujan y te prestan sus ojos.</p></div>
-        <div class="m-bullet"><h3>5) El grupo es el laboratorio</h3><p>No competimos: construimos. El resultado puede ser un negocio o una nueva mirada.</p></div>
-        <div class="m-bullet"><h3>6) Honestidad antes que perfección</h3><p>No tengo todas las respuestas. Tengo cicatrices y ganas de compartir.</p></div>
+        <div class="m-bullet"><h3 data-i18n="manifesto.b1.t">1) El que no se mueve se oxida</h3><p data-i18n="manifesto.b1.d">Esperar lo perfecto es no empezar nunca. Empezar mal es mejor que no empezar.</p></div>
+        <div class="m-bullet"><h3 data-i18n="manifesto.b2.t">2) Empezar con lo que hay</h3><p data-i18n="manifesto.b2.d">Nadie arranca con todo resuelto. Se aprende en el agua, no mirando la pileta.</p></div>
+        <div class="m-bullet"><h3 data-i18n="manifesto.b3.t">3) Equivocarse rápido y barato</h3><p data-i18n="manifesto.b3.d">Fallá pronto, aprendé barato. Lo caro es tardar en darse cuenta.</p></div>
+        <div class="m-bullet"><h3 data-i18n="manifesto.b4.t">4) Nadie emprende solo</h3><p data-i18n="manifesto.b4.d">Un espacio seguro donde te escuchan, te empujan y te prestan sus ojos.</p></div>
+        <div class="m-bullet"><h3 data-i18n="manifesto.b5.t">5) El grupo es el laboratorio</h3><p data-i18n="manifesto.b5.d">No competimos: construimos. El resultado puede ser un negocio o una nueva mirada.</p></div>
+        <div class="m-bullet"><h3 data-i18n="manifesto.b6.t">6) Honestidad antes que perfección</h3><p data-i18n="manifesto.b6.d">No tengo todas las respuestas. Tengo cicatrices y ganas de compartir.</p></div>
       </div>
-      <p style="margin-top:18px;color:var(--muted)"><strong>Resumen:</strong> No te vendo éxito. <strong>Te empujo a moverte.</strong></p>
+      <p style="margin-top:18px;color:var(--muted)" data-i18n="manifesto.sum"><strong>Resumen:</strong> No te vendo éxito. <strong>Te empujo a moverte.</strong></p>
     </div>
   </section>
 
   <!-- APORTE A LA COMUNIDAD (tarjetas alt) -->
   <section id="historia">
     <div class="wrap">
-      <h2>🧭 Mi aporte a la comunidad</h2>
-      <p class="sub">Años de crear espacios donde la gente se anima a hacer, aprender y compartir.</p>
+      <h2 data-i18n="impact.title">🧭 Mi aporte a la comunidad</h2>
+      <p class="sub" data-i18n="impact.sub">Años de crear espacios donde la gente se anima a hacer, aprender y compartir.</p>
       <div class="cards">
         <div class="card-alt"><h4>Club de la Comedia (2013–2018)</h4><p class="meta">Primer club y escuela de stand up en Tucumán. Formamos comediantes y un circuito que aún vive.</p></div>
         <div class="card-alt"><h4>Prestario de Bicicletas (2015–2018)</h4><p class="meta">Sistema gratuito de préstamos de bicicletas en locales aliados. Movilidad y comunidad sobre ruedas.</p></div>
@@ -195,8 +203,8 @@
   <!-- EMPRENDIMIENTOS Y FRACASOS (Cartas de poder) -->
   <section id="fracasos">
     <div class="wrap">
-      <h2>🧪 Sobre mis emprendimientos y fracasos</h2>
-      <p class="sub">Cartas de poder: qué hice bien, qué hice mal, qué cambiaría y qué aprendí.</p>
+      <h2 data-i18n="fail.title">🧪 Sobre mis emprendimientos y fracasos</h2>
+      <p class="sub" data-i18n="fail.sub">Cartas de poder: qué hice bien, qué hice mal, qué cambiaría y qué aprendí.</p>
       <div class="cards">
         <div class="card power"><span class="tag">Dolor: Medio</span><h4>El Aleph (2001–2002)</h4><p class="meta">Bar/Pub temático · Primer escenario para bandas locales</p><ul><li>✅ Referente en su tipo; económicamente funcionó; logré venderlo.</li><li>❌ Préstamo familiar = presión; mezclar amigos/negocio; desgaste nocturno.</li><li>🔄 Hoy: invertiría más en cocina y variedad.</li><li>🎮 Poder: saber en cuánto tiempo se enfría una cerveza en el freezer.</li></ul><p class="meta">Velocidad de aprendizaje: Rápido · Aprendizaje ganado: Alto</p></div>
         <div class="card power"><span class="tag">Dolor: Bajo</span><h4>AutosTucuman.com (2006–2013)</h4><p class="meta">Compra-venta de autos usados · Pionero en la provincia</p><ul><li>✅ Me adelanté 2 años al mercado; buena posición online; llegada sólida cuando entraron RRSS.</li><li>❌ Poca inversión en publicidad; dependencia de concesionarias.</li><li>🔄 Hoy: invertiría más en marketing y haría eventos de autos.</li><li>🎮 Poder: logos de todas las marcas… de memoria.</li></ul><p class="meta">Velocidad de aprendizaje: Lenta · Aprendizaje ganado: Muy Alto</p></div>
@@ -211,24 +219,24 @@
   <!-- TALLER -->
   <section id="taller">
     <div class="wrap">
-      <h2>🧰 El Taller — Método MOV (4×90’)</h2>
-      <p class="sub">Movimiento · Observación · Validación. Grupos de 4–5 personas. Resultado: tu Mapa de Movimiento completo + 2 micro-validaciones reales.</p>
+      <h2 data-i18n="workshop.title">🧰 El Taller — Método MOV (4×90’)</h2>
+      <p class="sub" data-i18n="workshop.sub">Movimiento · Observación · Validación. Grupos de 4–5 personas. Resultado: tu Mapa de Movimiento completo + 2 micro-validaciones reales.</p>
       <div class="grid-2">
         <div class="card">
-          <h3>Qué vas a lograr</h3>
+          <h3 data-i18n="workshop.goal">Qué vas a lograr</h3>
           <ul>
-            <li>Contar tu idea con claridad y recibir feedback honesto.</li>
-            <li>Diseñar y ejecutar micro-experimentos simples.</li>
-            <li>Completar tu <em>Mapa de Movimiento</em> y tu <em>Bitácora</em> del grupo.</li>
+            <li data-i18n="workshop.g1">Contar tu idea con claridad y recibir feedback honesto.</li>
+            <li data-i18n="workshop.g2">Diseñar y ejecutar micro-experimentos simples.</li>
+            <li data-i18n="workshop.g3">Completar tu <em>Mapa de Movimiento</em> y tu <em>Bitácora</em> del grupo.</li>
           </ul>
         </div>
         <div class="card">
-          <h3>Cómo funciona</h3>
+          <h3 data-i18n="workshop.how">Cómo funciona</h3>
           <ul>
-            <li><strong>Clase 1:</strong> del pensamiento al movimiento.</li>
-            <li><strong>Clase 2:</strong> ponerle forma (diseño de experimento).</li>
-            <li><strong>Clase 3:</strong> probar sin miedo (validación).</li>
-            <li><strong>Clase 4:</strong> compartir, ajustar y seguir.</li>
+            <li data-i18n="workshop.c1"><strong>Clase 1:</strong> del pensamiento al movimiento.</li>
+            <li data-i18n="workshop.c2"><strong>Clase 2:</strong> ponerle forma (diseño de experimento).</li>
+            <li data-i18n="workshop.c3"><strong>Clase 3:</strong> probar sin miedo (validación).</li>
+            <li data-i18n="workshop.c4"><strong>Clase 4:</strong> compartir, ajustar y seguir.</li>
           </ul>
         </div>
       </div>
@@ -238,30 +246,33 @@
   <!-- FAQ (resumen) -->
   <section id="faq">
     <div class="wrap">
-      <h2>💬 FAQ — Preguntas frecuentes</h2>
-      <details><summary>¿Necesito tener una idea concreta?</summary><p>Sólo ganas de hacer. Si tenés una idea vaga, la ordenamos. Si ya empezaste, la ajustamos y validamos.</p></details>
-      <details><summary>¿Qué me llevo al final?</summary><p>Tu Mapa de Movimiento completo, la Bitácora del grupo y al menos 2 validaciones ejecutadas.</p></details>
-      <details><summary>¿Cuántos somos por grupo?</summary><p>4–5 personas. Lo suficiente para que te escuchen; poco para que no te escondas.</p></details>
+      <h2 data-i18n="faq.title">💬 FAQ — Preguntas frecuentes</h2>
+      <details><summary data-i18n="faq.q1">¿Necesito tener una idea concreta?</summary><p data-i18n="faq.a1">Sólo ganas de hacer. Si tenés una idea vaga, la ordenamos. Si ya empezaste, la ajustamos y validamos.</p></details>
+      <details><summary data-i18n="faq.q2">¿Qué me llevo al final?</summary><p data-i18n="faq.a2">Tu Mapa de Movimiento completo, la Bitácora del grupo y al menos 2 validaciones ejecutadas.</p></details>
+      <details><summary data-i18n="faq.q3">¿Cuántos somos por grupo?</summary><p data-i18n="faq.a3">4–5 personas. Lo suficiente para que te escuchen; poco para que no te escondas.</p></details>
     </div>
   </section>
 
-  <!-- CTA / FORM + CONTACTO / CALENDLY -->
+  <!-- CTA / FORM -->
   <section id="aplicar">
     <div class="wrap">
       <div class="card">
-        <h2>Listo para moverte</h2>
-        <p class="sub">Dejame tus datos y te escribo para una mini charla de 15 minutos antes de inscribirte.</p>
-        <!-- Google Sheets: pegá tu URL de Apps Script (termina en /exec) -->
-        <form id="apply-form" action="https://script.google.com/macros/s/YOUR_EXEC_URL/exec" method="POST" style="display:grid;grid-template-columns:1fr 1fr;gap:12px" data-note="IMPORTANTE: pegá aquí tu URL real de Apps Script que termina en /exec. Se envía el ID de tu Sheet como campo oculto.">
-          <input name="nombre" aria-label="Nombre" required placeholder="Nombre" style="padding:14px 12px;border-radius:10px;border:1px solid var(--line);background:#0d1016;color:var(--ink)"/>
-          <input name="email" aria-label="Email" required type="email" placeholder="Email" style="padding:14px 12px;border-radius:10px;border:1px solid var(--line);background:#0d1016;color:var(--ink)"/>
-          <input name="ubicacion" aria-label="País o ciudad" placeholder="País / Ciudad" style="padding:14px 12px;border-radius:10px;border:1px solid var(--line);background:#0d1016;color:var(--ink)"/>
-          <input name="idea_7_palabras" aria-label="Tu idea en 7 palabras" placeholder="Tu idea en 7 palabras" style="padding:14px 12px;border-radius:10px;border:1px solid var(--line);background:#0d1016;color:var(--ink)"/>
-          <textarea name="objetivo_4_semanas" aria-label="¿Qué te gustaría mover en estas 4 semanas?" placeholder="¿Qué te gustaría mover en estas 4 semanas?" style="grid-column:1/-1;padding:14px 12px;border-radius:10px;border:1px solid var(--line);background:#0d1016;color:var(--ink);min-height:110px"></textarea>
+        <h2 data-i18n="form.title">¿Listo para moverte?</h2>
+        <p class="sub" data-i18n="form.subtitle">Dejame tus datos y te escribo para una mini charla de 15 minutos antes de inscribirte.</p>
+        <!-- FormSubmit (envío por email) -->
+        <form id="apply-form" action="https://formsubmit.co/gerchow77@gmail.com" method="POST" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <input name="nombre" aria-label="Nombre" required placeholder="Nombre" data-i18n-placeholder="form.name" style="padding:14px 12px;border-radius:10px;border:1px solid var(--line);background:#0d1016;color:var(--ink)"/>
+          <input name="email" aria-label="Email" required type="email" placeholder="Email" data-i18n-placeholder="form.email" style="padding:14px 12px;border-radius:10px;border:1px solid var(--line);background:#0d1016;color:var(--ink)"/>
+          <input name="ubicacion" aria-label="País o ciudad" placeholder="País / Ciudad" data-i18n-placeholder="form.location" style="padding:14px 12px;border-radius:10px;border:1px solid var(--line);background:#0d1016;color:var(--ink)"/>
+          <input name="idea_7_palabras" aria-label="Tu idea en 7 palabras" placeholder="Tu idea en 7 palabras" data-i18n-placeholder="form.idea7" style="padding:14px 12px;border-radius:10px;border:1px solid var(--line);background:#0d1016;color:var(--ink)"/>
+          <textarea name="objetivo_4_semanas" aria-label="¿Qué te gustaría mover en estas 4 semanas?" placeholder="¿Qué te gustaría mover en estas 4 semanas?" data-i18n-placeholder="form.goal" style="grid-column:1/-1;padding:14px 12px;border-radius:10px;border:1px solid var(--line);background:#0d1016;color:var(--ink);min-height:110px"></textarea>
           <input type="hidden" name="origen" value="Landing Uncle Gery" />
-          <!-- ID de tu Google Sheet para que el Apps Script lo use -->
-          <input type="hidden" name="sheetId" value="1-bVy-Zmwm4cEePzENBgiiOsniJUUh7-M6LwpJZRFAbc" />
-          <button class="btn" style="grid-column:1/-1">Quiero sumarme al próximo grupo</button>
+          <!-- FormSubmit config -->
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_subject" value="Nuevo interesado — Uncle Gery" />
+          <input type="hidden" name="_next" value="https://unclegery.com/gracias.html" />
+          <button class="btn" style="grid-column:1/-1" data-i18n="form.cta">Quiero sumarme al próximo grupo</button>
           <p id="apply-success" class="meta" style="display:none;grid-column:1/-1;color:var(--brand-2)">¡Gracias! Te voy a escribir pronto para coordinar la charla.</p>
           <p id="apply-error" class="meta" style="display:none;grid-column:1/-1;color:#ffb3b3">Ups, algo falló. Escribime por WhatsApp si persiste.</p>
         </form>
@@ -269,22 +280,9 @@
     </div>
   </section>
 
-  <section id="contacto">
+  <footer>
     <div class="wrap">
-      <div class="card" style="display:flex;flex-direction:column;gap:14px">
-        <h2>Coordinemos una charla de 15 minutos</h2>
-        <p class="sub">Elegí día y hora y charlamos (usamos Calendly para coordinar).</p>
-        <div>
-          <a class="btn" href="#" onclick="openCalendly();return false;">Coordinar reunión personal</a>
-          <p class="meta" style="margin-top:8px">Si no se abre el pop‑up: <a href="https://calendly.com/unclegery" target="_blank" rel="noopener">abrir en otra pestaña</a>.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer style="padding:36px 0;color:var(--muted)">
-    <div class="wrap">
-      <p>© <span id="y"></span> Uncle Gery — No te vendo éxito. Te empujo a moverte.</p>
+      <p>© <span id="y"></span> Uncle Gery — <span data-i18n="footer.claim">No te vendo éxito. Te empujo a moverte.</span> · <a href="#" title="Próximamente" data-i18n="footer.privacy">Privacidad</a></p>
     </div>
   </footer>
 
@@ -299,7 +297,6 @@
   </a>
 
   <!-- Scripts -->
-  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
   <script>
     function toggleDrawer(force){
       const d = document.getElementById('drawer');
@@ -319,43 +316,6 @@
         trigger && trigger.focus();
       }
     }
-    function openCalendly(){
-      var url = 'https://calendly.com/unclegery';
-      // Redirección directa a Calendly (sin popup)
-      window.location.href = url;
-    }
-    // Envío del formulario a Google Sheets (fetch)
-    const form = document.getElementById('apply-form');
-    if(form){
-      form.addEventListener('submit', async (e)=>{
-        e.preventDefault();
-        const ok = document.getElementById('apply-success');
-        const err = document.getElementById('apply-error');
-        const submitBtn = form.querySelector('button');
-        const originalText = submitBtn.textContent;
-        ok.style.display='none'; err.style.display='none';
-        submitBtn.disabled = true; submitBtn.textContent = 'Enviando…';
-        try{
-          const res = await fetch(form.action, { method:'POST', body:new FormData(form), headers:{'Accept':'application/json'}});
-          const ct = res.headers.get('content-type') || '';
-          let payload = null;
-          try{ payload = ct.includes('application/json') ? await res.json() : await res.text(); }catch(_){ /* noop */ }
-          if(res.ok && payload && (payload.ok === true || (typeof payload === 'string' && String(payload).includes('ok')))){
-            ok.style.display='block'; form.reset();
-          } else {
-            console.error('Apps Script error →', { status: res.status, payload });
-            err.textContent = 'Ups, algo falló. Abrí la consola (F12 → Console) para ver el detalle.';
-            err.style.display='block';
-          }
-        }catch(e){
-          console.error('Network/Fetch error →', e);
-          err.textContent = 'Error de conexión. Reintentá o escribime por WhatsApp.';
-          err.style.display='block';
-        }
-        submitBtn.disabled = false; submitBtn.textContent = originalText;
-      });
-    }
-    document.getElementById('y').textContent=new Date().getFullYear();
 
     // Back to top visibility + behavior
     const backTop = document.getElementById('backTop');
@@ -367,22 +327,263 @@
       window.scrollTo({top:0, behavior:'smooth'});
     });
 
-    // --- mini tests (no visual) ---
-    (function(){
-      try{
-        console.assert(typeof openCalendly === 'function', 'openCalendly no está definida');
-        const f = document.getElementById('apply-form');
-        console.assert(!!f, 'formulario #apply-form no encontrado');
-        if(f){
-          const action = (f.getAttribute('action')||'');
-          if(action.includes('YOUR_EXEC_URL')){
-            console.warn('⚠️ Recordatorio: reemplazá el action del formulario por tu URL /exec de Apps Script.');
-          }
-          const sid = f.querySelector('input[name="sheetId"]');
-          console.assert(!!sid && sid.value, 'sheetId oculto no presente o vacío');
-        }
-      }catch(e){ console.warn('self-test falló', e); }
+    // FormSubmit UX
+    const form = document.getElementById('apply-form');
+    if(form){
+      form.addEventListener('submit', (e)=>{
+        const btn = form.querySelector('button');
+        if(btn){ btn.disabled = true; btn.textContent = 'Enviando…'; }
+      });
+    }
+
+    document.getElementById('y').textContent=new Date().getFullYear();
+  </script>
+
+  <!-- i18n dictionaries + logic -->
+  <script>
+    const DICT = {
+      es: {
+        "hero.title": "No hace falta tener todo listo para empezar.<br/>Hace falta <span style='color:var(--brand)'>dar el primer paso</span> y acá te muestro cómo...",
+        "hero.lead": "Soy <strong>Uncle Gery</strong>. En 4 encuentros te acompaño a sacar adelante tu emprendimiento o idea: la contamos, la observamos y la validamos. <br/>Sin vueltas. Con humor. Y con resultados reales.",
+        "cta.move": "Quiero mover mi idea",
+        "cta.how": "Ver cómo funciona",
+        "cta.meet": "Coordinar reunión personal",
+
+        "menu.apply": "Quiero mover mi idea",
+        "menu.failcards": "Sobre mis emprendimientos y fracasos",
+        "menu.impact": "Mi aporte a la comunidad",
+        "menu.manifesto": "Manifiesto",
+        "menu.workshop": "El Taller",
+        "menu.faq": "FAQ",
+
+        "manifesto.title": "💬 Manifiesto de Uncle Gery",
+        "manifesto.sub": "Emprender no se enseña: se vive. Y a veces, se sobrevive.",
+        "manifesto.b1.t": "1) El que no se mueve se oxida",
+        "manifesto.b1.d": "Esperar lo perfecto es no empezar nunca. Empezar mal es mejor que no empezar.",
+        "manifesto.b2.t": "2) Empezar con lo que hay",
+        "manifesto.b2.d": "Nadie arranca con todo resuelto. Se aprende en el agua, no mirando la pileta.",
+        "manifesto.b3.t": "3) Equivocarse rápido y barato",
+        "manifesto.b3.d": "Fallá pronto, aprendé barato. Lo caro es tardar en darse cuenta.",
+        "manifesto.b4.t": "4) Nadie emprende solo",
+        "manifesto.b4.d": "Un espacio seguro donde te escuchan, te empujan y te prestan sus ojos.",
+        "manifesto.b5.t": "5) El grupo es el laboratorio",
+        "manifesto.b5.d": "No competimos: construimos. El resultado puede ser un negocio o una nueva mirada.",
+        "manifesto.b6.t": "6) Honestidad antes que perfección",
+        "manifesto.b6.d": "No tengo todas las respuestas. Tengo cicatrices y ganas de compartir.",
+        "manifesto.sum": "<strong>Resumen:</strong> No te vendo éxito. <strong>Te empujo a moverte.</strong>",
+
+        "impact.title": "🧭 Mi aporte a la comunidad",
+        "impact.sub": "Años de crear espacios donde la gente se anima a hacer, aprender y compartir.",
+
+        "fail.title": "🧪 Sobre mis emprendimientos y fracasos",
+        "fail.sub": "Cartas de poder: qué hice bien, qué hice mal, qué cambiaría y qué aprendí.",
+
+        "workshop.title": "🧰 El Taller — Método MOV (4×90’)",
+        "workshop.sub": "Movimiento · Observación · Validación. Grupos de 4–5 personas. Resultado: tu Mapa de Movimiento completo + 2 micro-validaciones reales.",
+        "workshop.goal": "Qué vas a lograr",
+        "workshop.g1": "Contar tu idea con claridad y recibir feedback honesto.",
+        "workshop.g2": "Diseñar y ejecutar micro-experimentos simples.",
+        "workshop.g3": "Completar tu <em>Mapa de Movimiento</em> y tu <em>Bitácora</em> del grupo.",
+        "workshop.how": "Cómo funciona",
+        "workshop.c1": "<strong>Clase 1:</strong> del pensamiento al movimiento.",
+        "workshop.c2": "<strong>Clase 2:</strong> ponerle forma (diseño de experimento).",
+        "workshop.c3": "<strong>Clase 3:</strong> probar sin miedo (validación).",
+        "workshop.c4": "<strong>Clase 4:</strong> compartir, ajustar y seguir.",
+
+        "faq.title": "💬 FAQ — Preguntas frecuentes",
+        "faq.q1": "¿Necesito tener una idea concreta?",
+        "faq.a1": "Sólo ganas de hacer. Si tenés una idea vaga, la ordenamos. Si ya empezaste, la ajustamos y validamos.",
+        "faq.q2": "¿Qué me llevo al final?",
+        "faq.a2": "Tu Mapa de Movimiento completo, la Bitácora del grupo y al menos 2 validaciones ejecutadas.",
+        "faq.q3": "¿Cuántos somos por grupo?",
+        "faq.a3": "4–5 personas. Lo suficiente para que te escuchen; poco para que no te escondas.",
+
+        "form.title": "¿Listo para moverte?",
+        "form.subtitle": "Dejame tus datos y te escribo para una mini charla de 15 minutos antes de inscribirte.",
+        "form.name": "Nombre",
+        "form.email": "Email",
+        "form.location": "País / Ciudad",
+        "form.idea7": "Tu idea en 7 palabras",
+        "form.goal": "¿Qué te gustaría mover en estas 4 semanas?",
+        "form.cta": "Quiero sumarme al próximo grupo",
+
+        "footer.claim": "No te vendo éxito. Te empujo a moverte.",
+        "footer.privacy": "Privacidad"
+      },
+      en: {
+        "hero.title": "You don’t need everything ready to start.<br/>You need to <span style='color:var(--brand)'>take the first step</span> — I’ll show you how.",
+        "hero.lead": "I’m <strong>Uncle Gery</strong>. In 4 sessions I help you move your project or idea forward: we tell it, observe it and validate it. <br>No fluff. With humor. Real outcomes.",
+        "cta.move": "I want to move my idea",
+        "cta.how": "See how it works",
+        "cta.meet": "Schedule a personal chat",
+
+        "menu.apply": "I want to move my idea",
+        "menu.failcards": "My ventures & failures",
+        "menu.impact": "My community impact",
+        "menu.manifesto": "Manifesto",
+        "menu.workshop": "The Workshop",
+        "menu.faq": "FAQ",
+
+        "manifesto.title": "💬 Uncle Gery’s Manifesto",
+        "manifesto.sub": "Entrepreneurship isn’t taught: it’s lived. And sometimes, survived.",
+        "manifesto.b1.t": "1) If you don’t move, you rust",
+        "manifesto.b1.d": "Waiting for perfection is never starting. Starting badly beats not starting.",
+        "manifesto.b2.t": "2) Start with what you have",
+        "manifesto.b2.d": "No one begins with everything solved. You learn in the water, not from the edge.",
+        "manifesto.b3.t": "3) Fail fast and cheap",
+        "manifesto.b3.d": "Fail early, learn cheaply. The expensive thing is realizing too late.",
+        "manifesto.b4.t": "4) No one builds alone",
+        "manifesto.b4.d": "A safe space where people listen, push and lend you their eyes.",
+        "manifesto.b5.t": "5) The group is the lab",
+        "manifesto.b5.d": "We don’t compete: we build. The outcome may be a business or a new lens.",
+        "manifesto.b6.t": "6) Honesty over perfection",
+        "manifesto.b6.d": "I don’t have all the answers. I have scars and the will to share.",
+        "manifesto.sum": "<strong>In short:</strong> I don’t sell you success. <strong>I push you to move.</strong>",
+
+        "impact.title": "🧭 My community impact",
+        "impact.sub": "Years creating spaces where people dare to do, learn and share.",
+
+        "fail.title": "🧪 My ventures & failures",
+        "fail.sub": "Power cards: what I did well, what I did wrong, what I’d change and what I learned.",
+
+        "workshop.title": "🧰 The Workshop — MOV Method (4×90’)",
+        "workshop.sub": "Movement · Observation · Validation. Groups of 4–5 people. Outcome: your Movement Map + 2 real micro-validations.",
+        "workshop.goal": "What you’ll achieve",
+        "workshop.g1": "Tell your idea clearly and get honest feedback.",
+        "workshop.g2": "Design and run simple micro‑experiments.",
+        "workshop.g3": "Complete your <em>Movement Map</em> and the group <em>Logbook</em>.",
+        "workshop.how": "How it works",
+        "workshop.c1": "<strong>Session 1:</strong> from thought to movement.",
+        "workshop.c2": "<strong>Session 2:</strong> shaping it (experiment design).",
+        "workshop.c3": "<strong>Session 3:</strong> test without fear (validation).",
+        "workshop.c4": "<strong>Session 4:</strong> share, adjust and keep going.",
+
+        "faq.title": "💬 FAQ — Frequently asked questions",
+        "faq.q1": "Do I need a concrete idea?",
+        "faq.a1": "You just need the will to do. If your idea is vague, we’ll shape it. If you started, we’ll adjust and validate.",
+        "faq.q2": "What do I get at the end?",
+        "faq.a2": "Your Movement Map, the group Logbook and at least 2 executed validations.",
+        "faq.q3": "How many per group?",
+        "faq.a3": "4–5 people. Enough to be heard; small enough not to hide.",
+
+        "form.title": "Ready to move?",
+        "form.subtitle": "Leave your info and I’ll text you for a 15‑minute chat before enrolling.",
+        "form.name": "Name",
+        "form.email": "Email",
+        "form.location": "Country / City",
+        "form.idea7": "Your idea in 7 words",
+        "form.goal": "What would you like to move in these 4 weeks?",
+        "form.cta": "I want to join the next group",
+
+        "footer.claim": "I don’t sell you success. I push you to move.",
+        "footer.privacy": "Privacy"
+      },
+      pt: {
+        "hero.title": "Você não precisa de tudo pronto para começar.<br/>Você precisa <span style='color:var(--brand)'>dar o primeiro passo</span> — eu te mostro como.",
+        "hero.lead": "Sou o <strong>Uncle Gery</strong>. Em 4 encontros eu te ajudo a tirar seu projeto ou ideia do papel: contamos, observamos e validamos. <br>Sem enrolação. Com humor. Resultados reais.",
+        "cta.move": "Quero mover minha ideia",
+        "cta.how": "Ver como funciona",
+        "cta.meet": "Agendar conversa pessoal",
+
+        "menu.apply": "Quero mover minha ideia",
+        "menu.failcards": "Meus empreendimentos e fracassos",
+        "menu.impact": "Meu impacto na comunidade",
+        "menu.manifesto": "Manifesto",
+        "menu.workshop": "O Workshop",
+        "menu.faq": "FAQ",
+
+        "manifesto.title": "💬 Manifesto do Uncle Gery",
+        "manifesto.sub": "Empreender não se ensina: se vive. E às vezes, se sobrevive.",
+        "manifesto.b1.t": "1) Quem não se move, enferruja",
+        "manifesto.b1.d": "Esperar o perfeito é nunca começar. Começar mal é melhor que não começar.",
+        "manifesto.b2.t": "2) Comece com o que tem",
+        "manifesto.b2.d": "Ninguém começa com tudo resolvido. Aprende-se dentro d’água, não da borda.",
+        "manifesto.b3.t": "3) Errar rápido e barato",
+        "manifesto.b3.d": "Erre cedo, aprenda barato. O caro é perceber tarde demais.",
+        "manifesto.b4.t": "4) Ninguém empreende sozinho",
+        "manifesto.b4.d": "Um espaço seguro onde te escutam, te empurram e te emprestam os olhos.",
+        "manifesto.b5.t": "5) O grupo é o laboratório",
+        "manifesto.b5.d": "Não competimos: construímos. O resultado pode ser um negócio ou um novo olhar.",
+        "manifesto.b6.t": "6) Honestidade antes da perfeição",
+        "manifesto.b6.d": "Não tenho todas as respostas. Tenho cicatrizes e vontade de compartilhar.",
+        "manifesto.sum": "<strong>Resumindo:</strong> Não te vendo sucesso. <strong>Te empurro para agir.</strong>",
+
+        "impact.title": "🧭 Meu impacto na comunidade",
+        "impact.sub": "Anos criando espaços onde as pessoas se atrevem a fazer, aprender e compartilhar.",
+
+        "fail.title": "🧪 Meus empreendimentos e fracassos",
+        "fail.sub": "Cartas de poder: o que fiz bem, o que fiz mal, o que mudaria e o que aprendi.",
+
+        "workshop.title": "🧰 O Workshop — Método MOV (4×90’)",
+        "workshop.sub": "Movimento · Observação · Validação. Grupos de 4–5 pessoas. Entrega: seu Mapa de Movimento + 2 microvalidações reais.",
+        "workshop.goal": "O que você vai alcançar",
+        "workshop.g1": "Explicar sua ideia com clareza e receber feedback honesto.",
+        "workshop.g2": "Desenhar e executar microexperimentos simples.",
+        "workshop.g3": "Completar seu <em>Mapa de Movimento</em> e o <em>Diário</em> do grupo.",
+        "workshop.how": "Como funciona",
+        "workshop.c1": "<strong>Aula 1:</strong> do pensamento ao movimento.",
+        "workshop.c2": "<strong>Aula 2:</strong> dar forma (design de experimento).",
+        "workshop.c3": "<strong>Aula 3:</strong> testar sem medo (validação).",
+        "workshop.c4": "<strong>Aula 4:</strong> compartilhar, ajustar e seguir.",
+
+        "faq.title": "💬 FAQ — Perguntas frequentes",
+        "faq.q1": "Preciso ter uma ideia concreta?",
+        "faq.a1": "Você só precisa vontade de fazer. Se a ideia é vaga, lapidamos. Se já começou, ajustamos e validamos.",
+        "faq.q2": "O que levo no final?",
+        "faq.a2": "Seu Mapa de Movimento, o Diário do grupo e pelo menos 2 validações executadas.",
+        "faq.q3": "Quantas pessoas por grupo?",
+        "faq.a3": "4–5 pessoas. Suficiente para te ouvir; pequeno para não se esconder.",
+
+        "form.title": "Pronto para se mover?",
+        "form.subtitle": "Deixe seus dados e te escrevo para um papo de 15 minutos antes da inscrição.",
+        "form.name": "Nome",
+        "form.email": "Email",
+        "form.location": "País / Cidade",
+        "form.idea7": "Sua ideia em 7 palavras",
+        "form.goal": "O que você quer mover nestas 4 semanas?",
+        "form.cta": "Quero entrar no próximo grupo",
+
+        "footer.claim": "Não te vendo sucesso. Te empurro para agir.",
+        "footer.privacy": "Privacidade"
+      }
+    };
+
+    const PLACEHOLDER_ATTRS = ["data-i18n-placeholder"];
+
+    function setLang(lang){
+      const dict = DICT[lang] || DICT.es;
+      // textos
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key = el.getAttribute('data-i18n');
+        if(dict[key]!==undefined){ el.innerHTML = dict[key]; }
+      });
+      // placeholders
+      PLACEHOLDER_ATTRS.forEach(attr=>{
+        document.querySelectorAll('['+attr+']').forEach(el=>{
+          const key = el.getAttribute(attr);
+          if(dict[key]!==undefined){ el.setAttribute('placeholder', dict[key]); }
+        });
+      });
+      localStorage.setItem('lang', lang);
+      const lbl = document.getElementById('lang-label');
+      if(lbl){ lbl.textContent = lang.toUpperCase(); }
+      document.documentElement.lang = lang;
+    }
+
+    function cycleLang(){
+      const list = ["es","en","pt"];
+      const cur = localStorage.getItem('lang') || "es";
+      const next = list[(list.indexOf(cur)+1)%list.length];
+      setLang(next);
+    }
+
+    (function initLang(){
+      const prefer = localStorage.getItem('lang') || (navigator.language||'es').slice(0,2);
+      setLang(["es","en","pt"].includes(prefer)?prefer:"es");
     })();
+
+    // Footer year
+    document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
