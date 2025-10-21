@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Política de Privacidad — Uncle Gery</title>
+  <meta name="description" content="Cómo maneja Uncle Gery los datos enviados en el formulario. Versión en Español, English y Português." />
+  <meta property="og:title" content="Política de Privacidad — Uncle Gery" />
+  <meta property="og:description" content="No te vendo éxito. Te empujo a moverte." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og-image.jpg" />
+  <link rel="icon" href="/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{ --bg:#0f1115; --card:#171A21; --ink:#EAEFF7; --muted:#A8B3C7; --brand:#F49D37; --brand-2:#7CF2C8; --line:#2A2F3A }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7}
+    .wrap{max-width:860px;margin:0 auto;padding:0 20px}
+    header{padding:72px 0 24px;border-bottom:1px solid var(--line);background:radial-gradient(900px 420px at 70% -10%, rgba(124,242,200,.08), transparent)}
+    h1{color:var(--brand);font-size:32px;margin:0 0 10px}
+    p.lead{color:var(--muted)}
+    main{padding:36px 0}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px}
+    h2{color:var(--brand-2);font-size:22px;margin:26px 0 8px}
+    a{color:var(--brand-2)}
+    footer{padding:36px 0;color:var(--muted);text-align:center;border-top:1px solid var(--line)}
+    #lang-switch{position:fixed;top:16px;right:16px;z-index:1002}
+    #lang-select{border:1px solid var(--line);background:rgba(20,22,28,.65);backdrop-filter:blur(6px);color:var(--ink);padding:8px 12px;border-radius:10px;cursor:pointer}
+    :focus-visible{outline:2px solid var(--brand-2);outline-offset:2px}
+  </style>
+</head>
+<body>
+  <div id="lang-switch">
+    <label for="lang-select" class="sr-only" style="position:absolute;left:-9999px">Idioma</label>
+    <select id="lang-select" aria-label="Elegir idioma" onchange="selectLang(this.value)">
+      <option value="es">ES</option>
+      <option value="en">EN</option>
+      <option value="pt">PT</option>
+    </select>
+  </div>
+
+  <header>
+    <div class="wrap">
+      <h1 data-i18n="title">Política de Privacidad — Uncle Gery</h1>
+      <p class="lead" data-i18n="lead">Este sitio no usa cookies ni trackers. Acá te cuento qué datos recolecto y cómo los uso.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="card">
+        <h2 data-i18n="h.collect">Datos recolectados</h2>
+        <p data-i18n="p.collect">El formulario puede pedir tu nombre, correo, ubicación y detalles de tu idea. Estos datos llegan por email a <strong>gerchow77@gmail.com</strong> a través de FormSubmit. No se guardan en bases de datos de este sitio.</p>
+
+        <h2 data-i18n="h.use">Uso de la información</h2>
+        <p data-i18n="p.use">Uso la información exclusivamente para coordinar una charla de 15 minutos y compartirte información del taller. No vendo ni cedo tus datos a terceros. No hago campañas publicitarias con tus datos.</p>
+
+        <h2 data-i18n="h.rights">Tu derecho a borrar</h2>
+        <p data-i18n="p.rights">Podés solicitar la eliminación de tu información escribiendo a <a href="mailto:gerchow77@gmail.com">gerchow77@gmail.com</a>. La borraré en un plazo razonable.</p>
+
+        <h2 data-i18n="h.cookies">Cookies y analítica</h2>
+        <p data-i18n="p.cookies">Actualmente no uso cookies ni analítica que identifique personas. Si en el futuro agrego métricas (por ejemplo, Plausible), lo indicaré aquí.</p>
+
+        <h2 data-i18n="h.updates">Actualizaciones</h2>
+        <p data-i18n="p.updates">Esta política puede actualizarse. Última modificación: <strong>octubre 2025</strong>.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>© <span id="y"></span> Uncle Gery — <span data-i18n="claim">No te vendo éxito. Te empujo a moverte.</span></p>
+    </div>
+  </footer>
+
+  <script>
+    const D = {
+      es: {
+        title: "Política de Privacidad — Uncle Gery",
+        lead: "Este sitio no usa cookies ni trackers. Acá te cuento qué datos recolecto y cómo los uso.",
+        "h.collect": "Datos recolectados",
+        "p.collect": "El formulario puede pedir tu nombre, correo, ubicación y detalles de tu idea. Estos datos llegan por email a <strong>gerchow77@gmail.com</strong> a través de FormSubmit. No se guardan en bases de datos de este sitio.",
+        "h.use": "Uso de la información",
+        "p.use": "Uso la información exclusivamente para coordinar una charla de 15 minutos y compartirte información del taller. No vendo ni cedo tus datos a terceros. No hago campañas publicitarias con tus datos.",
+        "h.rights": "Tu derecho a borrar",
+        "p.rights": "Podés solicitar la eliminación de tu información escribiendo a <a href='mailto:gerchow77@gmail.com'>gerchow77@gmail.com</a>. La borraré en un plazo razonable.",
+        "h.cookies": "Cookies y analítica",
+        "p.cookies": "Actualmente no uso cookies ni analítica que identifique personas. Si en el futuro agrego métricas (por ejemplo, Plausible), lo indicaré aquí.",
+        "h.updates": "Actualizaciones",
+        "p.updates": "Esta política puede actualizarse. Última modificación: <strong>octubre 2025</strong>.",
+        claim: "No te vendo éxito. Te empujo a moverte."
+      },
+      en: {
+        title: "Privacy Policy — Uncle Gery",
+        lead: "This site doesn’t use cookies or trackers. Here’s what I collect and how I use it.",
+        "h.collect": "Data collected",
+        "p.collect": "The form may ask for your name, email, location and idea details. These are sent via FormSubmit directly to <strong>gerchow77@gmail.com</strong>. No databases are used on this site.",
+        "h.use": "How I use your data",
+        "p.use": "I use your information exclusively to schedule a 15‑minute intro chat and share workshop info. I don’t sell or share your data with third parties.",
+        "h.rights": "Your right to deletion",
+        "p.rights": "You can request deletion anytime by emailing <a href='mailto:gerchow77@gmail.com'>gerchow77@gmail.com</a>. I’ll erase it within a reasonable timeframe.",
+        "h.cookies": "Cookies & analytics",
+        "p.cookies": "I currently don’t use cookies or person-identifying analytics. If I later add privacy-friendly metrics (e.g., Plausible), I’ll note it here.",
+        "h.updates": "Updates",
+        "p.updates": "This policy may be updated. Last modified: <strong>October 2025</strong>.",
+        claim: "I don’t sell you success. I push you to move."
+      },
+      pt: {
+        title: "Política de Privacidade — Uncle Gery",
+        lead: "Este site não usa cookies nem rastreadores. Aqui explico o que coleto e como uso.",
+        "h.collect": "Dados coletados",
+        "p.collect": "O formulário pode pedir seu nome, e-mail, localização e detalhes da sua ideia. Esses dados chegam por e-mail em <strong>gerchow77@gmail.com</strong> via FormSubmit. Não há banco de dados neste site.",
+        "h.use": "Como uso seus dados",
+        "p.use": "Uso as informações exclusivamente para marcar um papo de 15 minutos e compartilhar detalhes do workshop. Não vendo nem compartilho seus dados com terceiros.",
+        "h.rights": "Seu direito de exclusão",
+        "p.rights": "Você pode solicitar a exclusão a qualquer momento, enviando e-mail para <a href='mailto:gerchow77@gmail.com'>gerchow77@gmail.com</a>. Excluirei em prazo razoável.",
+        "h.cookies": "Cookies e análise",
+        "p.cookies": "Atualmente não uso cookies nem análise que identifique pessoas. Se no futuro eu adicionar métricas (ex.: Plausible), informarei aqui.",
+        "h.updates": "Atualizações",
+        "p.updates": "Esta política pode ser atualizada. Última modificação: <strong>outubro de 2025</strong>.",
+        claim: "Não te vendo sucesso. Te empurro para agir."
+      }
+    };
+
+    function setLang(lang){
+      const t = D[lang] || D.es;
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key = el.getAttribute('data-i18n');
+        if(t[key]!==undefined){ el.innerHTML = t[key]; }
+      });
+      const sel = document.getElementById('lang-select'); if(sel) sel.value = lang;
+      localStorage.setItem('lang', lang);
+      document.getElementById('y').textContent = new Date().getFullYear();
+    }
+    function selectLang(v){ setLang(v); }
+
+    (function init(){
+      const params = new URLSearchParams(location.search);
+      let lang = params.get('lang') || localStorage.getItem('lang') || 'es';
+      if(!['es','en','pt'].includes(lang)) lang = 'es';
+      setLang(lang);
+    })();
+  </script>
+</body>
+</html>
