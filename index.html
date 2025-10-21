@@ -11,7 +11,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="canonical" href="https://www.unclegery.com/" />
+  <link rel="canonical" href="https://unclegery.com/" />
   <link rel="icon" href="/favicon.ico" />
 
   <!-- Fonts -->
@@ -46,14 +46,19 @@
     .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
     .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+
     .m-bullet{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
     .m-bullet h3{margin:0 0 6px;font-size:18px}
     .m-bullet p{margin:0;color:var(--muted)}
+
+    .card-alt{background:#14171f;border-left:4px solid var(--brand-2);border-radius:14px;padding:20px}
     .meta{font-size:13px;color:var(--muted)}
+
     .power{position:relative;overflow:hidden}
     .tag{position:absolute;top:12px;right:12px;background:var(--brand-2);color:#0b0f11;font-weight:700;border-radius:999px;padding:4px 10px;font-size:12px}
     .power h4{margin:0 0 6px}
     ul{padding-left:18px;margin:8px 0}
+
     details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
     summary{cursor:pointer;font-weight:700}
     details + details{margin-top:12px}
@@ -81,7 +86,6 @@
     #backTop{position:fixed;right:18px;bottom:96px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#191d26;color:var(--ink);display:none;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.25);z-index:901;cursor:pointer}
 
     footer{padding:36px 0;color:var(--muted);text-align:center}
-    footer a{color:var(--brand-2)}
 
     @media (max-width:980px){ .hero-grid{grid-template-columns:1fr} .grid-3{grid-template-columns:1fr 1fr} .grid-2{grid-template-columns:1fr} .cards{grid-template-columns:1fr} .drawer{inset:0 20% 0 0} }
     @media (max-width:640px){ .hero h1{font-size:34px} .grid-3{grid-template-columns:1fr} .drawer{inset:0 0 0 0} }
@@ -93,7 +97,6 @@
   </style>
 </head>
 <body>
-  <!-- Selector de idioma -->
   <div id="lang-switch">
     <label for="lang-select" class="sr-only" style="position:absolute;left:-9999px">Idioma</label>
     <select id="lang-select" aria-label="Elegir idioma" onchange="selectLang(this.value)">
@@ -103,7 +106,6 @@
     </select>
   </div>
 
-  <!-- Menú -->
   <button class="hamburger" aria-label="Abrir menú" aria-controls="drawer" onclick="toggleDrawer()"><span></span></button>
   <aside id="drawer" class="drawer" aria-hidden="true" tabindex="-1">
     <h3>Menú</h3>
@@ -118,13 +120,12 @@
   </aside>
   <div id="overlay" class="overlay" onclick="toggleDrawer(false)"></div>
 
-  <!-- Hero -->
   <header class="hero">
     <div class="wrap hero-grid">
       <div>
         <span class="pill">🚀 Taller de Uncle Gery · Método MOV</span>
         <h1 data-i18n="hero.title">No hace falta tener todo listo para empezar.<br/>Hace falta <span style="color:var(--brand)">dar el primer paso</span> y acá te muestro cómo...</h1>
-        <p class="lead" data-i18n="hero.lead">Soy <strong>Uncle Gery</strong>. En 4 encuentros te acompaño a sacar adelante tu emprendimiento o idea: la contamos, la observamos y la validamos. <br/>Sin vueltas. Con humor. Y con resultados reales.</p>
+        <p class="lead" data-i18n="hero.lead">In 4 sessions, we take your idea from thought to action. No BS. Lots of humor. Real results.</p>
         <div class="cta">
           <a data-i18n="cta.move" href="#aplicar" class="btn">Quiero mover mi idea</a>
           <a data-i18n="cta.how" href="#taller" class="btn btn-outline">Ver cómo funciona</a>
@@ -134,7 +135,6 @@
     </div>
   </header>
 
-  <!-- Manifiesto -->
   <section id="manifiesto">
     <div class="wrap">
       <h2 data-i18n="manifesto.title">💬 Manifiesto de Uncle Gery</h2>
@@ -151,7 +151,6 @@
     </div>
   </section>
 
-  <!-- Aporte a la comunidad -->
   <section id="historia">
     <div class="wrap">
       <h2 data-i18n="impact.title">🧭 Mi aporte a la comunidad</h2>
@@ -160,7 +159,6 @@
     </div>
   </section>
 
-  <!-- Cartas de poder -->
   <section id="fracasos">
     <div class="wrap">
       <h2 data-i18n="fail.title">🧪 Sobre mis emprendimientos y fracasos</h2>
@@ -169,7 +167,6 @@
     </div>
   </section>
 
-  <!-- Taller -->
   <section id="taller">
     <div class="wrap">
       <h2 data-i18n="workshop.title">🧰 El Taller — Método MOV (4×90’)</h2>
@@ -196,7 +193,6 @@
     </div>
   </section>
 
-  <!-- FAQ -->
   <section id="faq">
     <div class="wrap">
       <h2 data-i18n="faq.title">💬 FAQ — Preguntas frecuentes</h2>
@@ -206,13 +202,12 @@
     </div>
   </section>
 
-  <!-- Form -->
   <section id="aplicar">
     <div class="wrap">
       <div class="card">
         <h2 data-i18n="form.title">¿Listo para moverte?</h2>
         <p class="sub" data-i18n="form.subtitle">Dejame tus datos y te escribo para una mini charla de 15 minutos antes de inscribirte.</p>
-        <form id="apply-form" action="https://formsubmit.co/gerchow77@gmail.com" method="POST" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <form id="apply-form" method="POST" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
           <input name="nombre" aria-label="Nombre" required placeholder="Nombre" data-i18n-placeholder="form.name" style="padding:14px 12px;border-radius:10px;border:1px solid var(--line);background:#0d1016;color:var(--ink)"/>
@@ -225,9 +220,8 @@
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_subject" value="Nuevo interesado — Uncle Gery" />
           <input type="hidden" name="_autoresponse" value="¡Gracias por escribir a Uncle Gery! En breve te contacto para coordinar una mini charla de 15 minutos." />
-          <input type="hidden" id="_next" name="_next" value="/gracias.html?lang=es" />
 
-          <button class="btn" style="grid-column:1/-1" data-i18n="form.cta" type="submit">Quiero sumarme al próximo grupo</button>
+          <button class="btn" style="grid-column:1/-1" data-i18n="form.cta" type="submit" formmethod="post">Quiero sumarme al próximo grupo</button>
           <p id="apply-success" class="meta" style="display:none;grid-column:1/-1;color:var(--brand-2)">¡Gracias! Te voy a escribir pronto para coordinar la charla.</p>
           <p id="apply-error" class="meta" style="display:none;grid-column:1/-1;color:#ffb3b3">Ups, algo falló. Escribime por WhatsApp si persiste.</p>
         </form>
@@ -235,16 +229,12 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <div class="wrap">
-      <p>© <span id="y"></span> Uncle Gery — <span data-i18n="footer.claim">No te vendo éxito. Te empujo a moverte.</span> ·
-        <a href="/privacy.html" data-i18n="footer.privacy">Política de Privacidad</a>
-      </p>
+      <p>© <span id="y"></span> Uncle Gery — <span data-i18n="footer.claim">No te vendo éxito. Te empujo a moverte.</span> · <a href="#" title="Próximamente" data-i18n="footer.privacy">Privacidad</a></p>
     </div>
   </footer>
 
-  <!-- Back to top & WhatsApp -->
   <button id="backTop" aria-label="Volver arriba" title="Volver arriba">↑</button>
   <a class="wa" href="https://wa.me/972522563659?text=Hola%20Uncle%20Gery%2C%20quiero%20mover%20mi%20idea" target="_blank" aria-label="WhatsApp" title="Escribime por WhatsApp">
     <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
@@ -255,7 +245,6 @@
   </a>
 
   <script>
-    // Drawer + focus
     function toggleDrawer(force){
       const d = document.getElementById('drawer');
       const o = document.getElementById('overlay');
@@ -275,10 +264,10 @@
       }
     }
 
-    // Back to top + year
     const backTop = document.getElementById('backTop');
     window.addEventListener('scroll',()=>{ backTop.style.display = window.scrollY>400 ? 'flex' : 'none'; });
     backTop && backTop.addEventListener('click',()=>{ window.scrollTo({top:0, behavior:'smooth'}); });
+
     document.getElementById('y').textContent=new Date().getFullYear();
   </script>
 
@@ -324,7 +313,7 @@
           {t:"Hackathon Tucumán (2016–2017)", d:"Competencia de innovación abierta donde estudiantes resolvían desafíos reales en 24 horas."},
           {t:"Rally Latinoamericano de Innovación (2016–2019)", d:"Organizador y mentor. Conectando mentes creativas de toda Latinoamérica."},
           {t:"24hs de Innovación (2013–2017)", d:"Evento de pensamiento rápido y trabajo en equipo para estudiantes universitarios."},
-          {t:"RÍES — Rally de Innovación Escolar (2018)", d:"Primer evento de innovación para escuelas secundarias. Creatividad desde la base."},
+          {t:"RÍES – Rally de Innovación Escolar (2018)", d:"Primer evento de innovación para escuelas secundarias. Creatividad desde la base."},
           {t:"TEDx Universidad Nacional de Tucumán (2017–2018)", d:"Organizador, presentador y coach de oradores. Ideas que valía la pena compartir."},
           {t:"FuckUp Nights (2014–2018)", d:"Coorganizador y presentador durante 6 años. Celebrar el error para aprender juntos."},
           {t:"Incuba UNT (2016–2019)", d:"Creador y asesor de más de 300 emprendedores en la incubadora de la Universidad Nacional de Tucumán."}
@@ -340,7 +329,7 @@
           {pain:"Medio", title:"Radio B (2018–2019)", meta:"Radio web con perspectiva de género y compromiso social", good:["Detectar audiencia sin micrófono; convocar equipos afines; equipo comprometido."], bad:["Pocos eventos de comunidad; equipo comercial poco profesional."], change:["Invertir más en desarrollo tecnológico y comercial."], power:"Aprender a ser conductor de radio.", speed:"Rápido", learn:"Alto"},
           {pain:"Alto", title:"Etzel Bar & Gery (2022–2024)", meta:"Restaurante argentino vegano · Boutique en el Mercado de Haifa", good:["Posicionamiento rápido; boca a boca; ambiente íntimo; buena elección de ubicación; venta del restaurante."], bad:["Poca inversión en difusión; no ampliar horario nocturno."], change:["Invertir más en difusión."], power:"Postres veganos nivel abuela.", speed:"Rápido", learn:"Alto"}
         ],
-        // WORKSHOP/FAQ/FORM/FOOTER
+        // WORKSHOP
         "workshop.title": "🧰 El Taller — Método MOV (4×90’)",
         "workshop.sub": "Movimiento · Observación · Validación. Grupos de 4–5 personas. Resultado: tu Mapa de Movimiento completo + 2 micro-validaciones reales.",
         "workshop.goal": "Qué vas a lograr",
@@ -352,6 +341,7 @@
         "workshop.c2": "<strong>Clase 2:</strong> ponerle forma (diseño de experimento).",
         "workshop.c3": "<strong>Clase 3:</strong> probar sin miedo (validación).",
         "workshop.c4": "<strong>Clase 4:</strong> compartir, ajustar y seguir.",
+        // FAQ
         "faq.title": "💬 FAQ — Preguntas frecuentes",
         "faq.q1": "¿Necesito tener una idea concreta?",
         "faq.a1": "Sólo ganas de hacer. Si tenés una idea vaga, la ordenamos. Si ya empezaste, la ajustamos y validamos.",
@@ -359,6 +349,7 @@
         "faq.a2": "Tu Mapa de Movimiento completo, la Bitácora del grupo y al menos 2 validaciones ejecutadas.",
         "faq.q3": "¿Cuántos somos por grupo?",
         "faq.a3": "4–5 personas. Lo suficiente para que te escuchen; poco para que no te escondas.",
+        // FORM
         "form.title": "¿Listo para moverte?",
         "form.subtitle": "Dejame tus datos y te escribo para una mini charla de 15 minutos antes de inscribirte.",
         "form.name": "Nombre",
@@ -367,12 +358,13 @@
         "form.idea7": "Tu idea en 7 palabras",
         "form.goal": "¿Qué te gustaría mover en estas 4 semanas?",
         "form.cta": "Quiero sumarme al próximo grupo",
+        // FOOTER
         "footer.claim": "No te vendo éxito. Te empujo a moverte.",
-        "footer.privacy": "Política de Privacidad"
+        "footer.privacy": "Privacidad"
       },
       en: {
         "hero.title": "You don’t need everything ready to start.<br/>You need to <span style='color:var(--brand)'>take the first step</span> — I’ll show you how.",
-        "hero.lead": "I’m <strong>Uncle Gery</strong>. In 4 sessions, we take your idea from thought to action. No BS. Lots of humor. Real results.",
+        "hero.lead": "In 4 sessions, we take your idea from thought to action. No BS. Lots of humor. Real results.",
         "cta.move": "I want to move my idea",
         "cta.how": "See how it works",
         "cta.meet": "Schedule a personal chat",
@@ -387,7 +379,7 @@
         "manifesto.b1.t": "1) If you don’t move, you rust",
         "manifesto.b1.d": "Waiting for perfection keeps you stuck. Starting badly beats not starting.",
         "manifesto.b2.t": "2) Start with what you have",
-        "manifesto.b2.d": "Start where you are and use what you have. You learn by getting in the water, not by standing on the edge.",
+        "manifesto.b2.d": "Start where you are and use what you have. Nobody begins with everything figured out — you learn by getting in the water, not by standing on the edge.",
         "manifesto.b3.t": "3) Fail fast, fail cheap",
         "manifesto.b3.d": "Fail early, learn cheaply — the costly mistake is realizing too late.",
         "manifesto.b4.t": "4) No one builds alone",
@@ -414,46 +406,46 @@
         "fail.sub": "Power Cards: what I did well, what I did wrong, what I’d change, and what I learned.",
         powers: [
           {pain:"Medium", title:"El Aleph (2001–2002)", meta:"Themed bar / pub · First stage for local bands", good:["Became a reference; financially solid; managed to sell it."], bad:["Family loan = pressure; friends/business mix; exhausting late hours."], change:["Invest more in the kitchen and menu variety."], power:"Knowing exactly how long a beer takes to chill in the freezer.", speed:"Fast", learn:"High"},
-          {pain:"Low", title:"AutosTucuman.com (2006–2013)", meta:"Used-car marketplace · Local pioneer", good:["Two years ahead of the market; strong online presence; resilient when social media arrived."], bad:["Underinvested in marketing; too reliant on dealerships."], change:["Invest more in marketing and host car meetups."], power:"Recognizing every car logo by heart.", speed:"Slow", learn:"Very High"},
-          {pain:"Low", title:"Proyectanos (2008–2009)", meta:"Crowdfunding platform · First of its kind locally", good:["Strong media + social reach; tight founder community."], bad:["Low automation; weak tech investment; poor project screening."], change:["More tech development, less time dependency."], power:"Asking investors for money without fainting.", speed:"Slow", learn:"Medium"},
+          {pain:"Low", title:"AutosTucuman.com (2006–2013)", meta:"Used-car marketplace · Local pioneer", good:["Two years ahead of the market; strong online position; resilient when social media arrived."], bad:["Underinvested in marketing; too reliant on dealerships."], change:["Invest more in marketing and host car meetups."], power:"Recognizing every car logo by heart.", speed:"Slow", learn:"Very High"},
+          {pain:"Low", title:"Proyectanos (2008–2009)", meta:"Crowdfunding platform · First of its kind locally", good:["Strong media + social reach; solid founder community."], bad:["Low automation; weak tech investment; poor project screening."], change:["More tech development, less time dependency."], power:"Asking investors for money without fainting.", speed:"Slow", learn:"Medium"},
           {pain:"High", title:"Büro Coworking (2012–2019)", meta:"Shared workspace · Entrepreneurs’ incubator", good:["First coworking in Northern Argentina; huge network; diverse strategic partners; local reference; sold before COVID."], bad:["Mispriced; tried to serve everyone; scaled too fast without a plan."], change:["More exclusivity and sharper ICP focus."], power:"Real-estate operator vibes, but kind.", speed:"Medium", learn:"Very High"},
-          {pain:"Medium", title:"Radio B (2018–2019)", meta:"Web radio with social purpose", good:["Spotted an unheard audience; brought aligned hosts; committed team."], bad:["Too few community events; weak commercial team."], change:["Invest more in tech and commercial."], power:"Became a radio host.", speed:"Fast", learn:"High"},
-          {pain:"High", title:"Etzel Bar & Gery (2022–2024)", meta:"Argentinian vegan restaurant · Boutique in Haifa Market", good:["Quick positioning; word of mouth; intimate vibe; strong location; successful exit."], bad:["Underinvested in promotion; didn’t extend night hours."], change:["Invest more in promotion."], power:"Grandma‑grade vegan desserts.", speed:"Fast", learn:"High"}
+          {pain:"Medium", title:"Radio B (2018–2019)", meta:"Feminist-leaning web radio with social purpose", good:["Spotted an unheard audience; rallied aligned hosts; committed team."], bad:["Too few community events; weak commercial team."], change:["Invest more in tech + commercial."], power:"Became a radio host.", speed:"Fast", learn:"High"},
+          {pain:"High", title:"Etzel Bar & Gery (2022–2024)", meta:"Argentinian vegan restaurant · Boutique in Haifa Market", good:["Quick positioning; word of mouth; intimate vibe; great location; successful exit."], bad:["Underinvested in media; didn’t extend night hours."], change:["Invest more in promotion."], power:"Grandma-grade vegan desserts.", speed:"Fast", learn:"High"}
         ],
         "workshop.title": "🧰 The Workshop — MOV Method (4×90’)",
-        "workshop.sub": "Movement · Observation · Validation. Small groups of 4–5. Outcome: your Movement Map + 2 real micro‑validations.",
+        "workshop.sub": "Movement. Observation. Validation. Small groups (4–5 people). You’ll leave with your own Movement Map and two real micro-validations.",
         "workshop.goal": "What you’ll achieve",
-        "workshop.g1": "Pitch your idea clearly and get honest feedback.",
-        "workshop.g2": "Design and run simple micro‑experiments.",
+        "workshop.g1": "Share your idea clearly and get honest feedback.",
+        "workshop.g2": "Design and run simple micro-experiments.",
         "workshop.g3": "Complete your <em>Movement Map</em> and the group <em>Logbook</em>.",
         "workshop.how": "How it works",
         "workshop.c1": "<strong>Session 1:</strong> from thought to movement.",
-        "workshop.c2": "<strong>Session 2:</strong> shape it (experiment design).",
-        "workshop.c3": "<strong>Session 3:</strong> test boldly (validation).",
-        "workshop.c4": "<strong>Session 4:</strong> share, adjust, continue.",
-        "faq.title": "💬 FAQ",
+        "workshop.c2": "<strong>Session 2:</strong> shaping it (experiment design).",
+        "workshop.c3": "<strong>Session 3:</strong> test without fear (validation).",
+        "workshop.c4": "<strong>Session 4:</strong> share, adjust and keep going.",
+        "faq.title": "💬 FAQ — Frequently asked questions",
         "faq.q1": "Do I need a concrete idea?",
-        "faq.a1": "Just the will to do. If your idea is fuzzy, we’ll shape it. If you started, we’ll refine and validate it.",
-        "faq.q2": "What do I take with me?",
-        "faq.a2": "Your completed Movement Map, the group Logbook and at least two validations executed.",
+        "faq.a1": "You just need the will to do. If your idea is vague, we’ll shape it. If you started, we’ll adjust and validate.",
+        "faq.q2": "What do I get at the end?",
+        "faq.a2": "Your Movement Map, the group Logbook and at least 2 executed validations.",
         "faq.q3": "How many per group?",
-        "faq.a3": "4–5 people. Enough to be heard, small enough not to hide.",
+        "faq.a3": "4–5 people. Enough to be heard; small enough not to hide.",
         "form.title": "Ready to move?",
-        "form.subtitle": "Leave your info and I’ll text you to schedule a 15‑minute chat before enrolling.",
+        "form.subtitle": "Leave your info *here* and I’ll text you for a 15-minute chat before enrolling.",
         "form.name": "Name",
         "form.email": "Email",
         "form.location": "Country / City",
         "form.idea7": "Your idea in 7 words",
-        "form.goal": "What would you like to move in 4 weeks?",
-        "form.cta": "Count me in",
-        "footer.claim": "I don’t sell success. I push you to move.",
-        "footer.privacy": "Privacy Policy"
+        "form.goal": "What would you like to move in these 4 weeks?",
+        "form.cta": "I want to join the next group",
+        "footer.claim": "I don’t sell you success. I push you to move.",
+        "footer.privacy": "Privacy"
       },
       pt: {
-        "hero.title": "Você não precisa de tudo pronto para começar.<br/>Precisa <span style='color:var(--brand)'>dar o primeiro passo</span> — e eu te mostro como.",
-        "hero.lead": "Sou o <strong>Uncle Gery</strong>. Em 4 encontros, tiramos sua ideia do papel para a ação. Sem enrolação. Com humor. Com resultados reais.",
+        "hero.title": "Você não precisa de tudo pronto para começar.<br/>Você precisa <span style='color:var(--brand)'>dar o primeiro passo</span> — eu te mostro como.",
+        "hero.lead": "Sou o Uncle Gery. Em 4 encontros eu te ajudo a tirar seu projeto ou ideia do papel: contamos, observamos e validamos. <br>Sem enrolação. Com humor. Resultados reais.",
         "cta.move": "Quero mover minha ideia",
-        "cta.how": "Como funciona",
+        "cta.how": "Ver como funciona",
         "cta.meet": "Agendar conversa pessoal",
         "menu.apply": "Quero mover minha ideia",
         "menu.failcards": "Meus empreendimentos e fracassos",
@@ -466,127 +458,157 @@
         "manifesto.b1.t": "1) Quem não se move, enferruja",
         "manifesto.b1.d": "Esperar o perfeito é nunca começar. Começar mal é melhor que não começar.",
         "manifesto.b2.t": "2) Comece com o que tem",
-        "manifesto.b2.d": "Ninguém começa com tudo resolvido. Aprende-se na água, não na borda.",
+        "manifesto.b2.d": "Ninguém começa com tudo resolvido. Aprende-se dentro d’água, não da borda.",
         "manifesto.b3.t": "3) Errar rápido e barato",
-        "manifesto.b3.d": "Errar cedo e aprender barato — caro é perceber tarde.",
-        "manifesto.b4.t": "4) Ninguém constrói sozinho",
-        "manifesto.b4.d": "Um espaço seguro onde escutam, provocam e emprestam outros olhos.",
+        "manifesto.b3.d": "Erre cedo, aprenda barato. O caro é perceber tarde demais.",
+        "manifesto.b4.t": "4) Ninguém empreende sozinho",
+        "manifesto.b4.d": "Um espaço seguro onde te escutam, te empurram e te emprestam os olhos.",
         "manifesto.b5.t": "5) O grupo é o laboratório",
         "manifesto.b5.d": "Não competimos: construímos. O resultado pode ser um negócio ou um novo olhar.",
-        "manifesto.b6.t": "6) Honestidade acima da perfeição",
+        "manifesto.b6.t": "6) Honestidade antes da perfeição",
         "manifesto.b6.d": "Não tenho todas as respostas. Tenho cicatrizes e vontade de compartilhar.",
-        "manifesto.sum": "<strong>Resumo:</strong> Não vendo sucesso. <strong>Te empurro para agir.</strong>",
-        "impact.title": "🧭 O que construí pelo caminho",
-        "impact.sub": "Anos criando espaços onde as pessoas se arriscam a fazer, aprender e compartilhar.",
+        "manifesto.sum": "<strong>Resumindo:</strong> Não te vendo sucesso. <strong>Te empurro para agir.</strong>",
+        "impact.title": "🧭 Meu impacto na comunidade",
+        "impact.sub": "Anos criando espaços onde as pessoas se atrevem a fazer, aprender e compartilhar.",
         impact: [
-          {t:"Clube de Comédia (2013–2018)", d:"Primeiro clube e escola de stand‑up em Tucumán. Formamos comediantes e uma cena que segue viva."},
-          {t:"Empréstimo de Bicicletas (2015–2018)", d:"Rede gratuita de empréstimo de bikes em comércios parceiros."},
-          {t:"Hackathon Tucumán (2016–2017)", d:"Desafios reais resolvidos em 24 horas por estudantes."},
-          {t:"Rali Latino‑Americano de Inovação (2016–2019)", d:"Organizador e mentor. Conectando mentes criativas na região."},
-          {t:"24h de Inovação (2013–2017)", d:"Evento de pensamento rápido e trabalho em equipe."},
-          {t:"RÍES — Rali de Inovação Escolar (2018)", d:"Primeiro evento de inovação para escolas."},
+          {t:"Clube da Comédia (2013–2018)", d:"Primeiro clube e escola de stand up em Tucumán. Formamos comediantes e um circuito que segue vivo."},
+          {t:"Empréstimo de Bicicletas (2015–2018)", d:"Rede gratuita de empréstimo de bicicletas em comércios parceiros."},
+          {t:"Hackathon Tucumán (2016–2017)", d:"Competição de inovação aberta: estudantes resolvendo desafios reais em 24 horas."},
+          {t:"Rali Latino-americano de Inovação (2016–2019)", d:"Organizador e mentor. Conectando mentes criativas na América Latina."},
+          {t:"24 Horas de Inovação (2013–2017)", d:"Evento de raciocínio rápido e trabalho em equipe para universitários."},
+          {t:"RÍES — Rally de Inovação Escolar (2018)", d:"Primeiro evento de inovação para escolas secundárias."},
           {t:"TEDx Universidade Nacional de Tucumán (2017–2018)", d:"Organizador, apresentador e coach de oradores."},
-          {t:"FuckUp Nights (2014–2018)", d:"Coorganizador e apresentador por 6 anos."},
-          {t:"Incuba UNT (2016–2019)", d:"Mentor de 300+ empreendedores na incubadora universitária."}
+          {t:"FuckUp Nights (2014–2018)", d:"Coorganizador e apresentador por 6 anos. Aprender celebrando o erro."},
+          {t:"Incuba UNT (2016–2019)", d:"Mentor de 300+ empreendedores na incubadora da universidade."}
         ],
         "fail.title": "🧪 Meus empreendimentos e fracassos",
         "fail.sub": "Cartas de poder: o que fiz bem, o que fiz mal, o que mudaria e o que aprendi.",
         powers: [
-          {pain:"Médio", title:"El Aleph (2001–2002)", meta:"Bar temático · Primeiro palco para bandas locais", good:["Virei referência; financeiramente funcionou; consegui vender."], bad:["Empréstimo familiar = pressão; amigos/negócio; noites desgastantes."], change:["Mais investimento na cozinha e variedade."], power:"Saber exatamente quanto leva para gelar uma cerveja no freezer.", speed:"Rápido", learn:"Alto"},
-          {pain:"Baixo", title:"AutosTucuman.com (2006–2013)", meta:"Classificados de usados · Pioneiro local", good:["Dois anos à frente do mercado; presença online forte."], bad:["Pouco marketing; dependência de concessionárias."], change:["Mais marketing e encontros de carros."], power:"Reconhecer logotipos de carros de olhos fechados.", speed:"Lento", learn:"Muito alto"},
-          {pain:"Baixo", title:"Proyectanos (2008–2009)", meta:"Plataforma de crowdfunding", good:["Ótima divulgação; comunidade sólida."], bad:["Baixa automação; pouco tech; triagem fraca de projetos."], change:["Mais desenvolvimento tech, menos dependência de tempo."], power:"Pedir dinheiro a investidores sem desmaiar.", speed:"Lento", learn:"Médio"},
-          {pain:"Alto", title:"Büro Coworking (2012–2019)", meta:"Coworking · Incubadora", good:["Primeiro do norte argentino; rede enorme; parceiros diversos; vendido antes da COVID."], bad:["Preço errado; quis atender todo mundo; crescimento rápido sem plano."], change:["Mais exclusividade e foco no cliente certo."], power:"Operador imobiliário do bem.", speed:"Médio", learn:"Muito alto"},
-          {pain:"Médio", title:"Radio B (2018–2019)", meta:"Rádio web com propósito social", good:["Identifiquei audiência sem microfone; equipe alinhada."], bad:["Poucos eventos; equipe comercial fraca."], change:["Mais investimento em tech e comercial."], power:"Virei apresentador de rádio.", speed:"Rápido", learn:"Alto"},
-          {pain:"Alto", title:"Etzel Bar & Gery (2022–2024)", meta:"Restaurante vegano argentino · Boutique em Haifa", good:["Posicionamento rápido; boca a boca; ambiente íntimo; boa localização; saída bem-sucedida."], bad:["Pouca divulgação; sem ampliar horário noturno."], change:["Mais divulgação."], power:"Sobremesas veganas nível vó.", speed:"Rápido", learn:"Alto"}
+          {pain:"Médio", title:"El Aleph (2001–2002)", meta:"Bar temático · Primeiro palco para bandas locais", good:["Virou referência; financeiramente funcionou; consegui vender."], bad:["Empréstimo familiar = pressão; amigos/negócio; rotina noturna cansativa."], change:["Investir mais na cozinha e variedade."], power:"Saber em quanto tempo a cerveja gela no freezer.", speed:"Rápido", learn:"Alto"},
+          {pain:"Baixo", title:"AutosTucuman.com (2006–2013)", meta:"Marketplace de carros usados · Pioneiro local", good:["Dois anos à frente do mercado; presença online forte; sólido com chegada das redes sociais."], bad:["Pouco investimento em marketing; dependência de concessionárias."], change:["Mais marketing e eventos de carros."], power:"Logos de todas as marcas… de cabeça.", speed:"Lento", learn:"Muito Alto"},
+          {pain:"Baixo", title:"Proyectanos (2008–2009)", meta:"Plataforma de crowdfunding · Primeira do tipo local", good:["Grande alcance em mídia e redes; comunidade de empreendedores forte."], bad:["Baixa automação; pouco investimento em tecnologia; triagem fraca de projetos."], change:["Mais desenvolvimento tech, menos dependência de tempo."], power:"Pedir dinheiro a investidores sem desmaiar.", speed:"Lento", learn:"Médio"},
+          {pain:"Alto", title:"Büro Coworking (2012–2019)", meta:"Coworking · Incubadora de empreendedores", good:["Primeiro coworking do norte argentino; rede enorme; sócios diversos; referência local; vendido antes da COVID."], bad:["Precificação ruim; querer atender todo mundo; crescimento rápido sem plano."], change:["Mais exclusividade e foco no cliente ideal."], power:"Gestor imobiliário do bem.", speed:"Médio", learn:"Muito Alto"},
+          {pain:"Médio", title:"Radio B (2018–2019)", meta:"Rádio web com perspectiva de gênero e impacto social", good:["Identificar audiência sem microfone; convocar times alinhados; equipe comprometida."], bad:["Poucos eventos com a comunidade; time comercial fraco."], change:["Mais investimento em tecnologia e comercial."], power:"Aprendi a ser apresentador de rádio.", speed:"Rápido", learn:"Alto"},
+          {pain:"Alto", title:"Etzel Bar & Gery (2022–2024)", meta:"Restaurante vegano argentino · Boutique no Mercado de Haifa", good:["Posicionamento rápido; boca a boca; clima intimista; ótima localização; venda realizada."], bad:["Pouco investimento em divulgação; sem horário noturno estendido."], change:["Investir mais em divulgação."], power:"Sobremesas veganas nível vó.", speed:"Rápido", learn:"Alto"}
         ],
         "workshop.title": "🧰 O Workshop — Método MOV (4×90’)",
-        "workshop.sub": "Movimento · Observação · Validação. Grupos de 4–5 pessoas. Entrega: seu Mapa de Movimento + 2 microvalidações reais.",
-        "workshop.goal": "O que você vai conquistar",
-        "workshop.g1": "Apresentar sua ideia com clareza e receber feedback honesto.",
-        "workshop.g2": "Desenhar e executar micro‑experimentos simples.",
+        "workshop.sub": "Movimento. Observação. Validação. Grupos de 4–5 pessoas. Entrega: seu Mapa de Movimento + 2 microvalidações reais.",
+        "workshop.goal": "O que você vai alcançar",
+        "workshop.g1": "Explicar sua ideia com clareza e receber feedback honesto.",
+        "workshop.g2": "Desenhar e executar microexperimentos simples.",
         "workshop.g3": "Completar seu <em>Mapa de Movimento</em> e o <em>Diário</em> do grupo.",
         "workshop.how": "Como funciona",
         "workshop.c1": "<strong>Aula 1:</strong> do pensamento ao movimento.",
-        "workshop.c2": "<strong>Aula 2:</strong> dar forma (desenho do experimento).",
+        "workshop.c2": "<strong>Aula 2:</strong> dar forma (design de experimento).",
         "workshop.c3": "<strong>Aula 3:</strong> testar sem medo (validação).",
         "workshop.c4": "<strong>Aula 4:</strong> compartilhar, ajustar e seguir.",
-        "faq.title": "💬 FAQ",
+        "faq.title": "💬 FAQ — Perguntas frequentes",
         "faq.q1": "Preciso ter uma ideia concreta?",
-        "faq.a1": "Só vontade de fazer. Se sua ideia é vaga, lapidamos. Se já começou, ajustamos e validamos.",
-        "faq.q2": "O que levo ao final?",
-        "faq.a2": "Seu Mapa de Movimento completo, o Diário do grupo e pelo menos 2 validações executadas.",
+        "faq.a1": "Você só precisa vontade de fazer. Se a ideia é vaga, lapidamos. Se já começou, ajustamos e validamos.",
+        "faq.q2": "O que levo no final?",
+        "faq.a2": "Seu Mapa de Movimento, o Diário do grupo e pelo menos 2 validações executadas.",
         "faq.q3": "Quantas pessoas por grupo?",
-        "faq.a3": "4–5 pessoas. Gente suficiente para te ouvir, pouca para você não se esconder.",
+        "faq.a3": "4–5 pessoas. Suficiente para te ouvir; pequeno para não se esconder.",
         "form.title": "Pronto para se mover?",
         "form.subtitle": "Deixe seus dados e te escrevo para um papo de 15 minutos antes da inscrição.",
         "form.name": "Nome",
-        "form.email": "E-mail",
+        "form.email": "Email",
         "form.location": "País / Cidade",
         "form.idea7": "Sua ideia em 7 palavras",
-        "form.goal": "O que você quer mover em 4 semanas?",
+        "form.goal": "O que você quer mover nestas 4 semanas?",
         "form.cta": "Quero entrar no próximo grupo",
-        "footer.claim": "Não vendo sucesso. Te empurro para agir.",
-        "footer.privacy": "Política de Privacidade"
+        "footer.claim": "Não te vendo sucesso. Te empurro para agir.",
+        "footer.privacy": "Privacidade"
       }
     };
 
-    function renderImpact(list){
-      const wrap=document.getElementById('impact-cards');
-      wrap.innerHTML='';
-      list.forEach(i=>{
-        const c=document.createElement('div');
-        c.className='card';
-        c.innerHTML=`<h3>${i.t}</h3><p class="meta">${i.d}</p>`;
-        wrap.appendChild(c);
-      });
-    }
+    const PLACEHOLDER_ATTRS = ["data-i18n-placeholder"];
 
+    function renderImpact(list){
+      const wrap = document.getElementById('impact-cards');
+      wrap.innerHTML = list.map(i=>`<div class="card-alt"><h4>${i.t}</h4><p class="meta">${i.d}</p></div>`).join('');
+    }
     function renderPowers(list){
-      const wrap=document.getElementById('power-cards');
-      wrap.innerHTML='';
-      list.forEach(p=>{
-        const c=document.createElement('div');
-        c.className='card power';
-        c.innerHTML = `
-          <span class="tag">Dolor: ${p.pain}</span>
+      const wrap = document.getElementById('power-cards');
+      wrap.innerHTML = list.map(p=>`
+        <div class="card power">
+          <span class="tag">${(document.documentElement.lang||'es')==='en'?'Pain':(document.documentElement.lang==='pt'?'Dor':'Dolor')}: ${p.pain}</span>
           <h4>${p.title}</h4>
           <p class="meta">${p.meta}</p>
           <ul>
-            <li><strong>Qué hice bien:</strong> ${p.good.join(' ')}</li>
-            <li><strong>Qué hice mal:</strong> ${p.bad.join(' ')}</li>
-            <li><strong>Qué cambiaría:</strong> ${p.change.join(' ')}</li>
+            ${p.good.map(x=>`<li>✅ ${x}</li>`).join('')}
+            ${p.bad.map(x=>`<li>❌ ${x}</li>`).join('')}
+            ${p.change.map(x=>`<li>🔄 ${x}</li>`).join('')}
+            <li>🎮 ${(document.documentElement.lang||'es')==='en'?'Unlocked':'pt'===document.documentElement.lang?'Poder desbloqueado':'Poder desbloqueado'}: ${p.power}</li>
           </ul>
-          <div class="card" style="margin-top:8px"><strong>Poder desbloqueado:</strong> ${p.power} · <strong>Velocidad:</strong> ${p.speed} · <strong>Aprendizaje:</strong> ${p.learn}</div>
-        `;
-        wrap.appendChild(c);
-      });
+          <p class="meta">${(document.documentElement.lang||'es')==='en'?'Learning speed':(document.documentElement.lang==='pt'?'Velocidade de aprendizagem':'Velocidad de aprendizaje')}: ${p.speed} · ${(document.documentElement.lang||'es')==='en'?'Learning gained':(document.documentElement.lang==='pt'?'Aprendizado ganho':'Aprendizaje ganado')}: ${p.learn}</p>
+        </div>
+      `).join('');
     }
 
     function setLang(lang){
       const dict = DICT[lang] || DICT.es;
-      document.documentElement.lang = lang;
+      // Static strings
       document.querySelectorAll('[data-i18n]').forEach(el=>{
         const key = el.getAttribute('data-i18n');
         if(dict[key]!==undefined){ el.innerHTML = dict[key]; }
       });
-      document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
-        const key = el.getAttribute('data-i18n-placeholder');
-        if(dict[key]!==undefined){ el.placeholder = el.placeholder = el.getAttribute('aria-label')||''; el.placeholder = dict[key]; }
+      // Placeholders
+      PLACEHOLDER_ATTRS.forEach(attr=>{
+        document.querySelectorAll('['+attr+']').forEach(el=>{
+          const key = el.getAttribute(attr);
+          if(dict[key]!==undefined){ el.setAttribute('placeholder', dict[key]); }
+        });
       });
-      renderImpact(dict.impact);
-      renderPowers(dict.powers);
-      const sel = document.getElementById('lang-select'); if(sel) sel.value = lang;
-      const next = document.getElementById('_next'); if(next) next.value = `/gracias.html?lang=${lang}`;
+      // Dynamic collections
+      renderImpact(dict.impact||[]);
+      renderPowers(dict.powers||[]);
+      // Persist + reflect
       localStorage.setItem('lang', lang);
+      document.documentElement.lang = lang;
+      const sel = document.getElementById('lang-select'); if(sel) sel.value = lang;
     }
-    function selectLang(v){ setLang(v); }
 
-    (function init(){
-      const params = new URLSearchParams(location.search);
-      let lang = params.get('lang') || localStorage.getItem('lang') || 'es';
-      if(!['es','en','pt'].includes(lang)) lang='es';
+    function selectLang(lang){ setLang(lang); }
+
+    (function initLang(){
+      const prefer = localStorage.getItem('lang') || (navigator.language||'es').slice(0,2);
+      const lang = ["es","en","pt"].includes(prefer)?prefer:"es";
       setLang(lang);
-      document.getElementById('y').textContent=new Date().getFullYear();
+      const sel = document.getElementById('lang-select'); if(sel) sel.value = lang;
+    })();
+
+    // === FormSubmit AJAX + redirect ===
+    (function initForm(){
+      const form = document.getElementById('apply-form');
+      if(!form) return;
+      form.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        const btn = form.querySelector('button');
+        const ok = document.getElementById('apply-success');
+        const err = document.getElementById('apply-error');
+        const lang = (localStorage.getItem('lang') || document.documentElement.lang || 'es').slice(0,2);
+        if(btn){ btn.disabled = true; btn.textContent = (lang==='en'?'Sending…':(lang==='pt'?'Enviando…':'Enviando…')); }
+        if(ok) ok.style.display = 'none';
+        if(err) err.style.display = 'none';
+        try{
+          const fd = new FormData(form);
+          if((fd.get('_honey')||'').trim()!=='') throw new Error('spam');
+          const res = await fetch('https://formsubmit.co/ajax/gerchow77@gmail.com', { method:'POST', body: fd });
+          const data = await res.json();
+          if(res.ok && data.success){
+            if(ok) ok.style.display = 'block';
+            window.location.href = `/gracias.html?lang=${encodeURIComponent(lang)}`;
+          } else {
+            throw new Error(data.message||'unknown');
+          }
+        } catch (e2){
+          if(err){ err.style.display = 'block'; err.textContent = (lang==='en'?'Something went wrong. Message me on WhatsApp.':(lang==='pt'?'Algo deu errado. Me chama no WhatsApp.':'Ups, algo falló. Escribime por WhatsApp.')); }
+          console.error('Form error:', e2);
+        } finally {
+          if(btn){ btn.disabled = false; btn.textContent = (lang==='en'?'I want to join the next group':(lang==='pt'?'Quero entrar no próximo grupo':'Quiero sumarme al próximo grupo')); }
+        }
+      });
     })();
   </script>
 </body>
