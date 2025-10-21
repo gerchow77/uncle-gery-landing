@@ -86,7 +86,6 @@
     #backTop{position:fixed;right:18px;bottom:96px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#191d26;color:var(--ink);display:none;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.25);z-index:901;cursor:pointer}
 
     footer{padding:36px 0;color:var(--muted);text-align:center}
-    footer a{color:var(--brand-2)}
 
     @media (max-width:980px){ .hero-grid{grid-template-columns:1fr} .grid-3{grid-template-columns:1fr 1fr} .grid-2{grid-template-columns:1fr} .cards{grid-template-columns:1fr} .drawer{inset:0 20% 0 0} }
     @media (max-width:640px){ .hero h1{font-size:34px} .grid-3{grid-template-columns:1fr} .drawer{inset:0 0 0 0} }
@@ -126,7 +125,7 @@
       <div>
         <span class="pill">🚀 Taller de Uncle Gery · Método MOV</span>
         <h1 data-i18n="hero.title">No hace falta tener todo listo para empezar.<br/>Hace falta <span style="color:var(--brand)">dar el primer paso</span> y acá te muestro cómo...</h1>
-        <p class="lead" data-i18n="hero.lead">Soy <strong>Uncle Gery</strong>. En 4 encuentros te acompaño a sacar adelante tu emprendimiento o idea: la contamos, la observamos y la validamos. <br/>Sin vueltas. Con humor. Y con resultados reales.</p>
+        <p class="lead" data-i18n="hero.lead">In 4 sessions, we take your idea from thought to action. No BS. Lots of humor. Real results.</p>
         <div class="cta">
           <a data-i18n="cta.move" href="#aplicar" class="btn">Quiero mover mi idea</a>
           <a data-i18n="cta.how" href="#taller" class="btn btn-outline">Ver cómo funciona</a>
@@ -232,7 +231,7 @@
 
   <footer>
     <div class="wrap">
-      <p>© <span id="y"></span> Uncle Gery — <span data-i18n="footer.claim">No te vendo éxito. Te empujo a moverte.</span> · <a href="/privacy.html" data-i18n="footer.privacy">Política de Privacidad</a></p>
+      <p>© <span id="y"></span> Uncle Gery — <span data-i18n="footer.claim">No te vendo éxito. Te empujo a moverte.</span> · <a href="#" title="Próximamente" data-i18n="footer.privacy">Privacidad</a></p>
     </div>
   </footer>
 
@@ -361,7 +360,7 @@
         "form.cta": "Quiero sumarme al próximo grupo",
         // FOOTER
         "footer.claim": "No te vendo éxito. Te empujo a moverte.",
-        "footer.privacy": "Política de Privacidad"
+        "footer.privacy": "Privacidad"
       },
       en: {
         "hero.title": "You don’t need everything ready to start.<br/>You need to <span style='color:var(--brand)'>take the first step</span> — I’ll show you how.",
@@ -440,7 +439,7 @@
         "form.goal": "What would you like to move in these 4 weeks?",
         "form.cta": "I want to join the next group",
         "footer.claim": "I don’t sell you success. I push you to move.",
-        "footer.privacy": "Privacy Policy"
+        "footer.privacy": "Privacy"
       },
       pt: {
         "hero.title": "Você não precisa de tudo pronto para começar.<br/>Você precisa <span style='color:var(--brand)'>dar o primeiro passo</span> — eu te mostro como.",
@@ -519,7 +518,7 @@
         "form.goal": "O que você quer mover nestas 4 semanas?",
         "form.cta": "Quero entrar no próximo grupo",
         "footer.claim": "Não te vendo sucesso. Te empurro para agir.",
-        "footer.privacy": "Política de Privacidade"
+        "footer.privacy": "Privacidade"
       }
     };
 
@@ -530,24 +529,19 @@
       wrap.innerHTML = list.map(i=>`<div class="card-alt"><h4>${i.t}</h4><p class="meta">${i.d}</p></div>`).join('');
     }
     function renderPowers(list){
-      const lang = (document.documentElement.lang||'es');
-      const painKey = lang==='en'?'Pain':(lang==='pt'?'Dor':'Dolor');
-      const learnSpd = lang==='en'?'Learning speed':(lang==='pt'?'Velocidade de aprendizagem':'Velocidad de aprendizaje');
-      const learnG = lang==='en'?'Learning gained':(lang==='pt'?'Aprendizado ganho':'Aprendizaje ganado');
-      const unlocked = lang==='en'?'Unlocked power':(lang==='pt'?'Poder desbloqueado':'Poder desbloqueado');
       const wrap = document.getElementById('power-cards');
       wrap.innerHTML = list.map(p=>`
         <div class="card power">
-          <span class="tag">${painKey}: ${p.pain}</span>
+          <span class="tag">${(document.documentElement.lang||'es')==='en'?'Pain':(document.documentElement.lang==='pt'?'Dor':'Dolor')}: ${p.pain}</span>
           <h4>${p.title}</h4>
           <p class="meta">${p.meta}</p>
           <ul>
             ${p.good.map(x=>`<li>✅ ${x}</li>`).join('')}
             ${p.bad.map(x=>`<li>❌ ${x}</li>`).join('')}
             ${p.change.map(x=>`<li>🔄 ${x}</li>`).join('')}
-            <li>🎮 ${unlocked}: ${p.power}</li>
+            <li>🎮 ${(document.documentElement.lang||'es')==='en'?'Unlocked':'pt'===document.documentElement.lang?'Poder desbloqueado':'Poder desbloqueado'}: ${p.power}</li>
           </ul>
-          <p class="meta">${learnSpd}: ${p.speed} · ${learnG}: ${p.learn}</p>
+          <p class="meta">${(document.documentElement.lang||'es')==='en'?'Learning speed':(document.documentElement.lang==='pt'?'Velocidade de aprendizagem':'Velocidad de aprendizaje')}: ${p.speed} · ${(document.documentElement.lang||'es')==='en'?'Learning gained':(document.documentElement.lang==='pt'?'Aprendizado ganho':'Aprendizaje ganado')}: ${p.learn}</p>
         </div>
       `).join('');
     }
@@ -584,16 +578,6 @@
       const sel = document.getElementById('lang-select'); if(sel) sel.value = lang;
     })();
 
-    // Back to top + year
-    const backTop = document.getElementById('backTop');
-    window.addEventListener('scroll',()=>{ backTop.style.display = window.scrollY>400 ? 'flex' : 'none'; });
-    backTop && backTop.addEventListener('click',()=>{ window.scrollTo({top:0, behavior:'smooth'}); });
-    document.getElementById('y').textContent=new Date().getFullYear();
-
-    // Drawer accessible toggle already above
-  </script>
-
-  <script>
     // === FormSubmit AJAX + redirect ===
     (function initForm(){
       const form = document.getElementById('apply-form');
